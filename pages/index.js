@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
      <Layout title="ProjectAD - Home">
-        <div>
+        <div className='w-full'>
             <Landing/>
         </div>   
       </Layout>
