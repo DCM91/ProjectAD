@@ -30,3 +30,4 @@ export const Landing = ({theme}) => {
     </div>
   )
 }
+export default Landing;
