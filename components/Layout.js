@@ -57,7 +57,7 @@ export const Layout = ({ title = "ProjectAD" , children}) => {
           </div>
         </header>
 
-        <main className=''>{children}</main>
+        <main className='w-full'>{children}</main>
 
         <footer className=''><Footer theme={theme} /></footer>
     </div>
