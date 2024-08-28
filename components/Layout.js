@@ -9,9 +9,9 @@ import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 
 
 export const Layout = ({ title = "ProjectAD" , children}) => {
-  const [theme, setTheme] = useState("luxury")
+  const [theme, setTheme] = useState("cupcake")
   const handleTheme = () =>{
-    setTheme(theme === "luxury" ? "cupcake" : "luxury")
+    setTheme(theme === "cupcake" ? "luxury" : "cupcake")
   }
   const typetheme=["luxury", "cupcake"]
 

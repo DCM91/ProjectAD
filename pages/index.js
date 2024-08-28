@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout"
 import en from "@/languages/en"
 import es from "@/languages/es"
 import fr from "@/languages/fr"
+import { Landing } from "./landing/Landing"
 
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
   return (
      <Layout title="ProjectAD - Home">
         <div>
-            <h1 className="flex justify-center items-center text-xl h-80">{t.home.title}</h1>
+            <Landing/>
         </div>   
       </Layout>
   )
