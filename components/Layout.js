@@ -29,7 +29,7 @@ export const Layout = ({ title = "ProjectAD" , children}) => {
           <div>
             <Navbar theme={theme}/>
             <div className='w-full flex items-center justify-end px-4'>
-              <BsFillSunFill className='text-lg p-2'/>
+              <BsFillSunFill className='text-lg mx-1'/>
               <input type="checkbox" className="toggle toggle-md" id="luxury" checked={theme === "luxury"} onChange={handleTheme} />
               <BsFillMoonStarsFill className='mx-1 mr-3' />
               <Selector />
