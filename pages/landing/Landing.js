@@ -18,12 +18,66 @@ export const Landing = ({theme}) => {
     }  
   return (
     <div data-theme={theme} className='p-2 grid'>
-        <h1 className='text-center text-2xl'>Actividades</h1>
-        <div className='p-2 flex flex-wrap gap-3 justify-center'>
-            <div className='border-2 border-red-600 h-40 w-40 p-2'>AIRE</div>
-            <div className='border-2 border-red-600 h-40 w-40 p-2'>MONTANYA</div>
-            <div className='border-2 border-red-600 h-40 w-40 p-2'>AGUA</div>
-            <div className='border-2 border-red-600 h-40 w-40 p-2'>NIEVE</div>
+        <h1 className='text-center text-3xl text-primary pb-4'>Actividades</h1>
+
+        <div className='p-2 flex flex-wrap gap-5 justify-center'>
+
+            <div class="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
+                <figure>
+                    <img
+                    src="https://cdn.pixabay.com/photo/2023/07/02/22/42/paragliding-8103063_1280.jpg "
+                    alt="AIRE" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">AIRE</h2>
+                    <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Ir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
+                <figure>
+                    <img
+                    src="https://cdn.pixabay.com/photo/2017/04/27/07/26/rock-climbing-2264698_1280.jpg "
+                    alt="MONTANYA" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">MONTANYA</h2>
+                    <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Ir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
+                <figure>
+                    <img
+                    src="https://cdn.pixabay.com/photo/2013/02/09/04/33/scuba-diving-79606_1280.jpg"
+                    alt="AGUA" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">AGUA</h2>
+                    <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Ir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
+                <figure>
+                    <img
+                    src="https://cdn.pixabay.com/photo/2015/12/15/18/29/snow-1094695_1280.jpg"
+                    alt="NIEVE" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">NIEVE</h2>
+                    <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Ir</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 

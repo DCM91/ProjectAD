@@ -28,7 +28,7 @@ export const Layout = ({ title = "ProjectAD" , children}) => {
         <header className='w-full'>
           <div>
             <Navbar theme={theme}/>
-            <div className='w-full flex items-center justify-end px-4'>
+            <div className='w-full h-12 flex items-center justify-end pr-4'>
               <BsFillSunFill className='text-lg mx-1'/>
               <input type="checkbox" className="toggle toggle-md" id="luxury" checked={theme === "luxury"} onChange={handleTheme} />
               <BsFillMoonStarsFill className='mx-1 mr-3' />
@@ -37,7 +37,7 @@ export const Layout = ({ title = "ProjectAD" , children}) => {
           </div>
         </header>
 
-        <main className='border-4 border-orange-700'>{children}</main>
+        <main className=''>{children}</main>
 
         <footer className=''><Footer theme={theme} /></footer>
     </div>
