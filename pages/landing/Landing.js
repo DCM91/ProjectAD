@@ -40,10 +40,10 @@ export const Landing = ({theme}) => {
                 <figure>
                     <img
                     src="https://cdn.pixabay.com/photo/2017/04/27/07/26/rock-climbing-2264698_1280.jpg "
-                    alt="MONTANYA" />
+                    alt="MONTAÑA" />
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">MONTANYA</h2>
+                    <h2 class="card-title">MONTAÑA</h2>
                     <div class="card-actions justify-end">
                     <button class="btn btn-primary">Ir</button>
                     </div>
