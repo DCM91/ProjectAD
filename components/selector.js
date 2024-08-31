@@ -18,7 +18,7 @@ export const Selector = () => {
 
       };
       return (
-        <select value={router.locale} onChange={changeLanguage} className="h-8 w- p-1 text-base bg-transparent" >
+        <select value={router.locale} onChange={changeLanguage} className="h-8 w- p-1 text-base bg-transparent " >
           <option className="bg-transparent" value="en">English</option>
           <option className="bg-transparent" value="es">Español</option>
           <option className="bg-transparent" value="fr">Français</option>
