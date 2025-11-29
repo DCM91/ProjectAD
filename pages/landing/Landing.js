@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
 import en from "@/languages/en";
 import es from "@/languages/es";
 import fr from "@/languages/fr";
@@ -44,21 +44,23 @@ useEffect(() => {
             priority
             sizes="(max-width: 768px) 60vw, 320px"
           />
-<p  className="font-title font-bold text-xl  text-white grid h-full place-content-end pb-7 pr-5 
-             opacity-0 translate-y-3 will-change-transform will-change-opacity reveal">
-  By Aroa Carmona
-</p>
 
+          <p  className="font-title font-bold text-xl  text-white grid h-full place-content-end pb-7 pr-5 
+                      opacity-0 translate-y-3 will-change-transform will-change-opacity reveal">
+            By Aroa Carmona
+          </p>
         </div>
 
-        <h1 className="text-center text-4xl font-bold mt-4">
-          {t?.heroTitle ?? "Contenido llamativo"}
+        <h1 className="font-title text-center text-4xl font-bold mt-1">
+          {t?.heroTitle ?? "Mi pasion"}
         </h1>
 
         {/* Opcional: subtítulo */}
-        <p className="text-center mt-2 opacity-80">
-          {t?.heroSubtitle ?? "Texto corto explicando qué ofreces."}
-        </p>
+        <p className="font-title text-center text-lg text-white max-w-2xl mx-auto leading-relaxed tracking-wide">
+  Soy Aroa Carmona, fotógrafa de vocación y enamorada de los pequeños detalles.<br/>
+  Me dedico a capturar momentos únicos en eventos, sesiones personales y fotografía animal.<br/>
+  Mi objetivo es crear imágenes que transmitan emoción, naturalidad y belleza auténtica.
+</p>
 
         {/* Botones / RRSS */}
         <div className="flex justify-center gap-4 mt-4">
@@ -66,21 +68,14 @@ useEffect(() => {
             {t?.heroSecondaryCta ?? "Contactar"}
           </Link>
           <a
-            href="https://github.com/"
+            href="https://www.instagram.com/byphnix"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-ghost btn-circle"
+            className="btn btn-ghost btn-circle scale-150"
           >
-            <BsGithub />
+            <BsInstagram />
           </a>
-          <a
-            href="https://linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-ghost btn-circle"
-          >
-            <BsLinkedin />
-          </a>
+
         </div>
 
         {/* CAROUSEL */}
