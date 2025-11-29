@@ -30,6 +30,10 @@ export const Landing = ({ theme }) => {
             priority
             sizes="(max-width: 768px) 60vw, 320px"
           />
+<p className="text-white grid h-full place-content-end pb-7 pr-5 
+              opacity-0 animate-fadeIn">
+  By Aroa Carmona
+</p>
         </div>
 
         <h1 className="text-center text-4xl font-bold mt-4">
