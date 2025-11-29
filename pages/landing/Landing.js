@@ -66,7 +66,7 @@ export const Landing = ({ theme }) => {
           <div className="carousel carousel-center bg-transparent max-w-screen space-x-4 mx-auto">
 <div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
               <img
-                src="/assets/CARROUSEL1.jpg"
+                src="/assets/CARROUSEL4.jpg"
                 className="w-full h-full object-cover rounded-box"
                 alt="Foto 1"
               />
@@ -87,7 +87,7 @@ export const Landing = ({ theme }) => {
             </div>
 <div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
               <img
-                src="/assets/CARROUSEL4.jpg"
+                src="/assets/CARROUSEL1.jpg"
                 className="w-full h-full object-cover rounded-box"
                 alt="Foto 4"
               />
