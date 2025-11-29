@@ -45,7 +45,7 @@ export const Navbar = ({ theme }) => {
             <ul
               className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-2 w-52 shadow"
             >
-              <li className="border-b-2"><a href="/contact"> Contact</a></li>
+              <li className="border-b-2"><a href="/landing/contact"> Contact</a></li>
               <li className="border-b-2 "><a href="#servicios">Servicios</a></li>
               <li><a><Selector /></a></li>
             </ul>

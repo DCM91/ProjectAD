@@ -28,7 +28,7 @@ export const Footer = ({theme}) => {
                 <span className="footer-title" style={{fontSize:"large"}}>Social &nbsp; /Byphniix</span> 
                 <div className="grid grid-flow-col gap-4">
                 <a href='https://www.instagram.com/byphnix'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><BsInstagram /></svg></a>
-                <a href='https://github.com/DCM91'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><MdEmail /></svg></a>
+                <a href='/landing/contact'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><MdEmail /></svg></a>
                 </div>
             </div>
         </footer>

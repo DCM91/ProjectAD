@@ -41,7 +41,7 @@ export const Landing = ({ theme }) => {
 
         {/* Opcional: botones / RRSS */}
         <div className="flex justify-center gap-4 mt-4">
-        <Link href="/contact" className="btn btn-secondary">
+        <Link href="/landing/contact" className="btn btn-secondary">
           {t?.heroSecondaryCta ?? "Contactar"}
         </Link>
           <a

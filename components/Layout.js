@@ -33,19 +33,9 @@ export const Layout = ({ title = "Byphnix" , children}) => {
 
               {/* Selector a la derecha */}
               <div className="ml-auto flex items-center justify-end pr-1">
-                {/* <BsFillSunFill className="text-lg mx-1" />
-                <input
-                  type="checkbox"
-                  className="toggle toggle-md"
-                  id="luxury"
-                  checked={theme === "luxury"}
-                  onChange={handleTheme}
-                />
-                <BsFillMoonStarsFill className="mx-1 mr-3" /> */}
+
               </div>
           </div>
-
-
           </div>
         </header>
 
