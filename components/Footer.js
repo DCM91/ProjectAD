@@ -1,5 +1,7 @@
 import React from 'react'
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
+
 import en from "@/languages/en"
 import es from "@/languages/es"
 import fr from "@/languages/fr"
@@ -18,15 +20,15 @@ export const Footer = ({theme}) => {
     }  
   return (
     <div data-theme={theme}>
-        <footer  className="footer p-8 py-6 bg-neutral text-neutral-content" >
+        <footer  className="footer p-8 py-6 bg-accent text-accbg-accent-content" >
             <div style={{position: 'relative', fontSize:"large"}}>
                 <p><br/>{t.footer.text1}<br/> <br/>{t.footer.text2}</p>
             </div> 
             <div>
-                <span className="footer-title" style={{fontSize:"large"}}>Social &nbsp; /ProjectAD</span> 
+                <span className="footer-title" style={{fontSize:"large"}}>Social &nbsp; /Byphniix</span> 
                 <div className="grid grid-flow-col gap-4">
-                <a href='https://www.linkedin.com/in/dcm91'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><BsLinkedin /></svg></a>
-                <a href='https://github.com/DCM91'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><BsGithub /></svg></a>
+                <a href='https://www.instagram.com/byphnix'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><BsInstagram /></svg></a>
+                <a href='https://github.com/DCM91'><svg style={{width:"4rem", height:"4rem"}}  viewBox="0 0 24 24" className="fill-current"><MdEmail /></svg></a>
                 </div>
             </div>
         </footer>

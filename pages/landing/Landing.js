@@ -17,8 +17,13 @@ export const Landing = ({ theme }) => {
   }
   return (
     <div data-theme={theme} className="p-2 pb-6 gap-y-6 grid min-h-full">
-      <div className="border border-red-500 h-40">
+      <div className="border border-red-500 p-6 place-self-center">
         <h1 className="text-center" >CONTENT LLAMATIVO</h1>
+        <img
+                alt="Tailwind CSS Navbar component"
+                className=" "
+                src="/assets/TTs.jpg"
+              />
       </div>
       <div>
         <h1 className="text-center text-3xl text-primary pb-4">Servicios</h1>
