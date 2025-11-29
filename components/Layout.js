@@ -29,11 +29,7 @@ export const Layout = ({ title = "Byphnix" , children}) => {
           <div className=''>
               <Navbar theme={theme}/>
 
-              <div className="relative w-full h-fit flex py-2 items-center text-primary font-bold">
-              {/* Texto centrado */}
-              <h1 className="absolute left-1/2 -translate-x-1/2 text-center text-xl pt-2">
-                By Aroa Carmona
-              </h1>
+              <div className="relative w-full h-fit flex py-2 items-center menu-title text-accent-content font-bold">
 
               {/* Selector a la derecha */}
               <div className="ml-auto flex items-center justify-end pr-1">

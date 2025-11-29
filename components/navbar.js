@@ -27,7 +27,7 @@ export const Navbar = ({ theme }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -35,7 +35,7 @@ export const Navbar = ({ theme }) => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="4"
                 d="M4 6h16M4 12h16M4 18h7"
               />
             </svg>
@@ -52,7 +52,7 @@ export const Navbar = ({ theme }) => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Byphnix</a>
+        <a className="btn btn-ghost text-2xl font-bold">Byphnix</a>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
@@ -64,7 +64,7 @@ export const Navbar = ({ theme }) => {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
+                alt="image Navbar component"
                 src="/assets/TTs.jpg"
               />
             </div>
