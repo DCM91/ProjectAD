@@ -16,14 +16,11 @@ export const Landing = ({ theme }) => {
     t = fr;
   }
   return (
-    <div data-theme={theme} className="p-2 pb-6 gap-y-6 grid min-h-full">
-      <div className="border border-red-500 p-6 place-self-center">
-        <h1 className="text-center" >CONTENT LLAMATIVO</h1>
-        <img
-                alt="Tailwind CSS Navbar component"
-                className=" "
-                src="/assets/TTs.jpg"
-              />
+    <div data-theme={theme} className="py-6 gap-y-6 grid min-h-full">
+      <div className="border border-red-500 p-6 place-self-center w-full bg-[url(/assets/Tibidabo.jpg)] bg-cover">
+      <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
+      <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
+      <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       </div>
       <div>
         <h1 className="text-center text-3xl text-primary pb-4">Servicios</h1>
@@ -31,8 +28,8 @@ export const Landing = ({ theme }) => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-                src="https://cdn.pixabay.com/photo/2023/07/02/22/42/paragliding-8103063_1280.jpg "
-                alt="AIRE"
+src="/assets/TTs.jpg"           
+     alt="AIRE"
               />
             </figure>
             <div className="card-body">
@@ -46,7 +43,7 @@ export const Landing = ({ theme }) => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-                src="https://cdn.pixabay.com/photo/2017/04/27/07/26/rock-climbing-2264698_1280.jpg "
+src="/assets/TTs.jpg"
                 alt="MONTAÑA"
               />
             </figure>
@@ -61,7 +58,7 @@ export const Landing = ({ theme }) => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-                src="https://cdn.pixabay.com/photo/2013/02/09/04/33/scuba-diving-79606_1280.jpg"
+src="/assets/TTs.jpg"
                 alt="AGUA"
               />
             </figure>
@@ -76,7 +73,7 @@ export const Landing = ({ theme }) => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-                src="https://cdn.pixabay.com/photo/2015/12/15/18/29/snow-1094695_1280.jpg"
+src="/assets/TTs.jpg"
                 alt="NIEVE"
               />
             </figure>
@@ -93,3 +90,4 @@ export const Landing = ({ theme }) => {
   );
 };
 export default Landing;
+
