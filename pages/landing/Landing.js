@@ -67,7 +67,7 @@ export const Landing = ({ theme }) => {
   <div className="carousel carousel-center bg-transparent max-w-screen mx-auto space-x-4 px-4">
     <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
-        src="/assets/CARROUSEL4.jpg"
+        src="/assets/CARROUSEL4.webp"
         className="w-full h-full object-cover rounded-box"
         alt="Foto 1"
       />
@@ -75,7 +75,7 @@ export const Landing = ({ theme }) => {
 
     <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
-        src="/assets/CARROUSEL2.jpg"
+        src="/assets/CARROUSEL2.webp"
         className="w-full h-full object-cover rounded-box"
         alt="Foto 2"
       />
@@ -83,7 +83,7 @@ export const Landing = ({ theme }) => {
 
     <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
-        src="/assets/CARROUSEL3.jpg"
+        src="/assets/CARROUSEL3.webp"
         className="w-full h-full object-cover rounded-box"
         alt="Foto 3"
       />
@@ -91,7 +91,7 @@ export const Landing = ({ theme }) => {
 
     <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
-        src="/assets/CARROUSEL1.jpg"
+        src="/assets/CARROUSEL1.webp"
         className="w-full h-full object-cover rounded-box"
         alt="Foto 4"
       />
@@ -99,7 +99,7 @@ export const Landing = ({ theme }) => {
 
     <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
-        src="/assets/CARROUSEL5.jpg"
+        src="/assets/CARROUSEL5.webp"
         className="w-full h-full object-cover rounded-box"
         alt="Foto 5"
       />
