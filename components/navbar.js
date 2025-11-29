@@ -16,7 +16,7 @@ export const Navbar = ({ theme }) => {
   };
 
   return (
-    <div data-theme={theme} className="navbar bg-neutral text-neutral-content">
+    <div data-theme={theme} className="navbar  text-neutral-content">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -44,15 +44,14 @@ export const Navbar = ({ theme }) => {
             <ul
               className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-0 w-52 p-2 shadow"
             >
-              <li className="border-b-2"><a>Actividades</a></li>
+              <li className="border-b-2"><a>Contact me</a></li>
               <li className="border-b-2"><a>Packs</a></li>
-              <li><a><Selector /></a></li>
             </ul>
           )}
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Project AD</a>
+        <a className="btn btn-ghost mt-2 text-4xl text-secondary">Byphnix</a>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
@@ -71,16 +70,8 @@ export const Navbar = ({ theme }) => {
           </div>
           {isProfileOpen && (
             <ul
-              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="d-none"
             >
-              <li>
-                <a className="justify-between">
-                  Perfil
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li><a>Ajustes</a></li>
-              <li><a>Logout</a></li>
             </ul>
           )}
         </div>

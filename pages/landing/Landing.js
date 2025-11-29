@@ -16,10 +16,12 @@ export const Landing = ({ theme }) => {
     t = fr;
   }
   return (
-    <div data-theme={theme} className="p-2 gap-y-6 grid">
+    <div data-theme={theme} className="p-2 pb-6 gap-y-6 grid min-h-full">
+      <div className="border border-red-500 h-40">
+        <h1 className="text-center" >CONTENT LLAMATIVO</h1>
+      </div>
       <div>
-        <h1 className="text-center text-3xl text-primary pb-4">Actividades</h1>
-
+        <h1 className="text-center text-3xl text-primary pb-4">Servicios</h1>
         <div className="p-2 flex flex-wrap gap-5 justify-center">
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
@@ -81,76 +83,6 @@ export const Landing = ({ theme }) => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* PROMOCIONES---------------------------------------------------------------------------------------------------------------- */}
-
-      <div className="">
-        <h1 className="text-center text-3xl text-primary py-4">Promociones</h1>
-        <div className="carousel carousel-center bg-neutral rounded-box space-x-4 p-4">
-          <div className="carousel-item grid">
-            <img
-              src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0d/ca/bb/0b.jpg"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-            <p className="text-secondary text-xl">Barranquismo</p>
-            <p className="text-secondary text-lg">Desde 20e</p>
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://www.hoynoticias.cl/wp-content/uploads/2023/07/Conoce-las-mejores-pistas-disponibles-en-Santiago-para-practicar-karting-1-scaled.webp"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://sierradelguadarrama.com/wp-content/uploads/2023/04/puenting-salto-madrid.jpg"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://openwater.es/wp-content/uploads/2019/06/snorkel-espa%C3%B1a.png"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://www.weeky.es/wp-content/uploads/2018/01/paintball-702x336.jpg"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://rockclimbingvalencia.com/wp-content/uploads/2022/02/Rapel-2.jpg"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://res.cloudinary.com/manawa/image/upload/v1639133947/articles/3588/photo-of-man-paddling-kayak-in-raging-river-2250521.jpg"
-              className="rounded-box"
-              style={{ width: "300px", height: "200px", objectFit: "cover" }}
-            />
-          </div>
-        </div>
-      </div>
-      <div className='pb-8'>
-      <h1 className="text-center text-3xl text-primary py-4">TOP de Septiembre</h1>
-      <div className="flex w-full flex-col">
-            <div className="card bg-base-300 rounded-box grid h-20 place-items-center">content</div>
-            <div className="divider"></div>
-            <div className="card bg-base-300 rounded-box grid h-20 place-items-center">content</div>
-            <div className="divider"></div>
-            <div className="card bg-base-300 rounded-box grid h-20 place-items-center">content</div>
-        </div>
-
       </div>
     </div>
   );
