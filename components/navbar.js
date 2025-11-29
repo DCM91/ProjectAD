@@ -16,6 +16,7 @@ export const Navbar = ({ theme }) => {
   };
 
   return (
+
     <div data-theme={theme} className="navbar bg-transparent text-neutral-content border-b-2 border-b-orange-500">
       <div className="navbar-start">
         <div className="dropdown">
@@ -42,10 +43,10 @@ export const Navbar = ({ theme }) => {
           </div>
           {isMenuOpen && (
             <ul
-              className="menu menu-sm dropdown-content bg-transparent text-neutral-content rounded-b-box z-[1] mt-0 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-2 w-52 shadow"
             >
               <li className="border-b-2"><a>Actividades</a></li>
-              <li className="border-b-2"><a>Packs</a></li>
+              <li className="border-b-2 "><a href="#servicios">Servicios</a></li>
               <li><a><Selector /></a></li>
             </ul>
           )}

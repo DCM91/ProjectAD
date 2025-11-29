@@ -23,7 +23,7 @@ export const Landing = ({ theme }) => {
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       </div>
       <div>
-        <h1 className="text-center text-3xl text-primary pb-4">Servicios</h1>
+        <h1 className="text-center text-3xl text-primary pb-4" id="servicios">Servicios</h1>
         <div className="p-2 flex flex-wrap gap-5 justify-center">
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
