@@ -16,8 +16,8 @@ export const Landing = ({ theme }) => {
     t = fr;
   }
   return (
-    <div data-theme={theme} className="py-6 gap-y-6 grid min-h-full">
-      <div className="border border-red-500 p-6 place-self-center w-full bg-[url(/assets/Tibidabo.jpg)] bg-cover">
+    <div data-theme={theme} className="pb-6 gap-y-6 grid min-h-full bg-transparent">
+      <div className="p-6 place-self-center w-full ">
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
@@ -28,7 +28,7 @@ export const Landing = ({ theme }) => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-src="/assets/TTs.jpg"           
+                src="/assets/TTs.jpg"           
      alt="Eventos"
               />
             </figure>
@@ -43,14 +43,14 @@ src="/assets/TTs.jpg"
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-src="/assets/TTs.jpg"
+                src="/assets/TTs.jpg"
                 alt="Sesiones Individuales"
               />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Sesiones Individuales</h2>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Ir</button>
+                <button className=" btn btn-primary">Ir</button>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ src="/assets/TTs.jpg"
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-src="/assets/TTs.jpg"
+                src="/assets/TTs.jpg"
                 alt="Sessiones Grupales"
               />
             </figure>
@@ -73,7 +73,7 @@ src="/assets/TTs.jpg"
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
               <img
-src="/assets/TTs.jpg"
+                src="/assets/TTs.jpg"
                 alt="Recuerdos Inolvidables"
               />
             </figure>
