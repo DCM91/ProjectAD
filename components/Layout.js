@@ -22,7 +22,7 @@ export const Layout = ({ title = "Byphnix" , children}) => {
             <title>{title}</title>
             <meta name="description" content="Byphnix" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/next.svg" />
+            <link rel="icon" href="/next.png" />
         </Head>
 
         <header className='w-full bg-transparent ' >
