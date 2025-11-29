@@ -21,8 +21,8 @@ export const Landing = ({ theme }) => {
     >
       {/* HERO */}
       <div className="p-2 place-self-center w-full">
-        <div className="relative w-72 h-72 mx-auto">
-          <Image
+        <div className="relative w-80  mx-auto">
+          <img
             src="/assets/TTs-removebg.png"
             alt="Sesiones Individuales"
             fill
@@ -65,7 +65,7 @@ export const Landing = ({ theme }) => {
         {/* CAROUSEL */}
         <div className="mt-8">
   <div className="carousel carousel-center bg-transparent max-w-screen mx-auto space-x-4 px-4">
-    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+    <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
         src="/assets/CARROUSEL4.jpg"
         className="w-full h-full object-cover rounded-box"
@@ -73,7 +73,7 @@ export const Landing = ({ theme }) => {
       />
     </div>
 
-    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+    <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
         src="/assets/CARROUSEL2.jpg"
         className="w-full h-full object-cover rounded-box"
@@ -81,7 +81,7 @@ export const Landing = ({ theme }) => {
       />
     </div>
 
-    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+    <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
         src="/assets/CARROUSEL3.jpg"
         className="w-full h-full object-cover rounded-box"
@@ -89,7 +89,7 @@ export const Landing = ({ theme }) => {
       />
     </div>
 
-    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+    <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
         src="/assets/CARROUSEL1.jpg"
         className="w-full h-full object-cover rounded-box"
@@ -97,7 +97,7 @@ export const Landing = ({ theme }) => {
       />
     </div>
 
-    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+    <div className="carousel-item w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
       <img
         src="/assets/CARROUSEL5.jpg"
         className="w-full h-full object-cover rounded-box"
