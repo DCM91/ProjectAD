@@ -5,6 +5,7 @@ import es from "@/languages/es";
 import fr from "@/languages/fr";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
@@ -20,7 +21,7 @@ export const Landing = ({ theme }) => {
     >
       {/* HERO */}
       <div className="p-2 place-self-center w-full">
-        <div className="relative w-64 h-64 mx-auto">
+        <div className="relative w-72 mx-auto">
           <Image
             src="/assets/TTs-removebg.png"
             alt="Sesiones Individuales"
@@ -40,9 +41,9 @@ export const Landing = ({ theme }) => {
 
         {/* Opcional: botones / RRSS */}
         <div className="flex justify-center gap-4 mt-4">
-          <button className="btn btn-primary">
-            {t?.heroCta ?? "Reserva tu sesión"}
-          </button>
+        <Link href="/contact" className="btn btn-secondary">
+          {t?.heroSecondaryCta ?? "Contactar"}
+        </Link>
           <a
             href="https://github.com/"
             target="_blank"
@@ -63,45 +64,50 @@ export const Landing = ({ theme }) => {
 
         {/* CAROUSEL */}
         <div className="mt-8">
-          <div className="carousel carousel-center bg-transparent max-w-screen space-x-4 mx-auto">
-<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
-              <img
-                src="/assets/CARROUSEL4.jpg"
-                className="w-full h-full object-cover rounded-box"
-                alt="Foto 1"
-              />
-            </div>
-<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
-              <img
-                src="/assets/CARROUSEL2.jpg"
-                className="w-full h-full object-cover rounded-box"
-                alt="Foto 2"
-              />
-            </div>
-<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
-              <img
-                src="/assets/CARROUSEL3.jpg"
-                className="w-full h-full object-cover rounded-box"
-                alt="Foto 3"
-              />
-            </div>
-<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
-              <img
-                src="/assets/CARROUSEL1.jpg"
-                className="w-full h-full object-cover rounded-box"
-                alt="Foto 4"
-              />
-            </div>
-<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
-              <img
-                src="/assets/CARROUSEL5.jpg"
-                className="w-full h-full object-cover rounded-box"
-                alt="Foto 5"
-              />
-            </div>            
-          </div>
-        </div>
-      </div>
+  <div className="carousel carousel-center bg-transparent max-w-screen mx-auto space-x-4 px-4">
+    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+      <img
+        src="/assets/CARROUSEL4.jpg"
+        className="w-full h-full object-cover rounded-box"
+        alt="Foto 1"
+      />
+    </div>
+
+    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+      <img
+        src="/assets/CARROUSEL2.jpg"
+        className="w-full h-full object-cover rounded-box"
+        alt="Foto 2"
+      />
+    </div>
+
+    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+      <img
+        src="/assets/CARROUSEL3.jpg"
+        className="w-full h-full object-cover rounded-box"
+        alt="Foto 3"
+      />
+    </div>
+
+    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+      <img
+        src="/assets/CARROUSEL1.jpg"
+        className="w-full h-full object-cover rounded-box"
+        alt="Foto 4"
+      />
+    </div>
+
+    <div className="carousel-item w-4/5 h-[35vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80">
+      <img
+        src="/assets/CARROUSEL5.jpg"
+        className="w-full h-full object-cover rounded-box"
+        alt="Foto 5"
+      />
+    </div>
+  </div>
+  </div>
+  </div>
+
 
       
       <div>
@@ -168,8 +174,8 @@ export const Landing = ({ theme }) => {
           </div>
         </div>
       </div>
-    </div>
-  );
+      </div>
+    );
 };
 
 export default Landing;
