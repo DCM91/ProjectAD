@@ -24,3 +24,25 @@ html {
 .animate-fadeIn {
   animation: fadeIn 1.6s ease-out forwards;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+:root {
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+.font-title {
+  font-family: var(--font-cormorant);
+}
+
+.font-body {
+  font-family: var(--font-inter);
+}

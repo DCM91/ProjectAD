@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import en from "@/languages/en";
 import es from "@/languages/es";
@@ -14,6 +14,20 @@ export const Landing = ({ theme }) => {
   if (router.locale === "es") t = es;
   if (router.locale === "fr") t = fr;
 
+useEffect(() => {
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("revealed");
+    });
+  });
+
+  elements.forEach((el) => observer.observe(el));
+
+  return () => observer.disconnect();
+}, []);
+
   return (
     <div
       data-theme={theme}
@@ -24,16 +38,17 @@ export const Landing = ({ theme }) => {
         <div className="relative w-80 h-60 mx-auto">
           <Image
             src="/assets/TTs-removebg_white.png"
-            alt="Sesiones Individuales"
+            alt="Logo"
             fill
             className="object-contain"
             priority
             sizes="(max-width: 768px) 60vw, 320px"
           />
-<p className="text-white grid h-full place-content-end pb-7 pr-5 
-              opacity-0 animate-fadeIn">
+<p  className="font-title font-bold text-xl  text-white grid h-full place-content-end pb-7 pr-5 
+             opacity-0 translate-y-3 will-change-transform will-change-opacity reveal">
   By Aroa Carmona
 </p>
+
         </div>
 
         <h1 className="text-center text-4xl font-bold mt-4">

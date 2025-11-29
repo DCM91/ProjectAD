@@ -54,7 +54,7 @@ export const Navbar = ({ theme }) => {
         </div>
       </div>
       <div className="navbar-center">
-        <a href="/" className="btn btn-ghost text-2xl font-bold">Byphnix</a>
+        <a href="/" className="btn btn-ghost font-title font-bold text-4xl">Byphnix</a>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
