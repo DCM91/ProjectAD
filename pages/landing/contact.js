@@ -50,7 +50,7 @@ const Contact = () => {
 
   return (
     <Layout title="Byphnix - Contact">
-      <div className="min-h-screen flex items-center justify-center first-letter:px-4 py-10">
+      <div className="min-h-screen flex items-center justify-center first-letter px-4 py-10">
         <div className="w-full max-w-2xl">
           {/* Título */}
           <h1 className="text-3xl sm:text-4xl font-bold text-center mb-2">
