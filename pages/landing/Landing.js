@@ -64,28 +64,41 @@ export const Landing = ({ theme }) => {
         {/* CAROUSEL */}
         <div className="mt-8">
           <div className="carousel carousel-center bg-transparent max-w-screen space-x-4 mx-auto">
-            <div className="carousel-item">
+<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
               <img
-                src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
-                className="rounded-box"
+                src="/assets/CARROUSEL1.jpg"
+                className="w-full h-full object-cover rounded-box"
                 alt="Foto 1"
               />
             </div>
-            <div className="carousel-item">
+<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
               <img
-                src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
-                className="rounded-box"
+                src="/assets/CARROUSEL2.jpg"
+                className="w-full h-full object-cover rounded-box"
                 alt="Foto 2"
               />
             </div>
-            <div className="carousel-item">
+<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
               <img
-                src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
-                className="rounded-box"
+                src="/assets/CARROUSEL3.jpg"
+                className="w-full h-full object-cover rounded-box"
                 alt="Foto 3"
               />
             </div>
-            {/* ...si quieres más, deja solo unas pocas, no hace falta tantas repetidas */}
+<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
+              <img
+                src="/assets/CARROUSEL4.jpg"
+                className="w-full h-full object-cover rounded-box"
+                alt="Foto 4"
+              />
+            </div>
+<div className="carousel-item w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 aspect-[4/3]">
+              <img
+                src="/assets/CARROUSEL5.jpg"
+                className="w-full h-full object-cover rounded-box"
+                alt="Foto 5"
+              />
+            </div>            
           </div>
         </div>
       </div>
