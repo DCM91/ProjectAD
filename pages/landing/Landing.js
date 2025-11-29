@@ -29,11 +29,11 @@ export const Landing = ({ theme }) => {
             <figure>
               <img
 src="/assets/TTs.jpg"           
-     alt="AIRE"
+     alt="Eventos"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">AIRE</h2>
+              <h2 className="card-title">Eventos</h2>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Ir</button>
               </div>
@@ -44,11 +44,11 @@ src="/assets/TTs.jpg"
             <figure>
               <img
 src="/assets/TTs.jpg"
-                alt="MONTAÑA"
+                alt="Sesiones Individuales"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">MONTAÑA</h2>
+              <h2 className="card-title">Sesiones Individuales</h2>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Ir</button>
               </div>
@@ -59,11 +59,11 @@ src="/assets/TTs.jpg"
             <figure>
               <img
 src="/assets/TTs.jpg"
-                alt="AGUA"
+                alt="Sessiones Grupales"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">AGUA</h2>
+              <h2 className="card-title">Sessiones Grupales</h2>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Ir</button>
               </div>
@@ -74,11 +74,11 @@ src="/assets/TTs.jpg"
             <figure>
               <img
 src="/assets/TTs.jpg"
-                alt="NIEVE"
+                alt="Recuerdos Inolvidables"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">NIEVE</h2>
+              <h2 className="card-title">Recuerdos Inolvidables</h2>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Ir</button>
               </div>
