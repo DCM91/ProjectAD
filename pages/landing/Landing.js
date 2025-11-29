@@ -4,6 +4,7 @@ import en from "@/languages/en";
 import es from "@/languages/es";
 import fr from "@/languages/fr";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
@@ -18,12 +19,20 @@ export const Landing = ({ theme }) => {
   return (
     <div data-theme={theme} className="pb-6 gap-y-6 grid min-h-full bg-transparent">
       <div className="p-6 place-self-center w-full ">
-      <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
+      <div className="relative w-64 h-64 mx-auto">
+        <Image
+          src="/assets/TTs-removebg.png"
+          alt="Sesiones Individuales"
+          fill
+          className="object-contain"
+        />
+      </div>
+
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       <h1 className="text-center h-80" >CONTENT LLAMATIVO</h1>
       </div>
       <div>
-        <h1 className="text-center text-3xl text-primary pb-4" id="servicios">Servicios</h1>
+        <h1 className="text-center text-3xl text-warning pb-4" id="servicios">Servicios</h1>
         <div className="p-2 flex flex-wrap gap-5 justify-center">
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure>
