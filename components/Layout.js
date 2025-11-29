@@ -8,7 +8,7 @@ import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 
 
 
-export const Layout = ({ title = "ProjectAD" , children}) => {
+export const Layout = ({ title = "Byphnix" , children}) => {
   const [theme, setTheme] = useState("autumn")
   const handleTheme = () =>{
     setTheme(theme === "autumn" ? "luxury" : "autumn")

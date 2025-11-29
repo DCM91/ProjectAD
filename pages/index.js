@@ -19,7 +19,7 @@ export default function Home() {
 
 
   return (
-     <Layout title="ProjectAD - Home">
+     <Layout title="Byphnix - Home">
         <div className='w-full'>
             <Landing/>
         </div>   
