@@ -54,7 +54,7 @@ const Contact = ({ theme }) => {
 
     <div
       data-theme={theme}
-      className="min-h-screen flex items-center justify-center bg-base-100 px-4 py-10"
+      className="min-h-screen flex items-center justify-center bg-secondary px-4 py-10"
     >
         
       <div className="w-full max-w-2xl">

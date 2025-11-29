@@ -21,7 +21,7 @@ export const Landing = ({ theme }) => {
     >
       {/* HERO */}
       <div className="p-2 place-self-center w-full">
-        <div className="relative w-72 mx-auto">
+        <div className="relative w-72 h-72 mx-auto">
           <Image
             src="/assets/TTs-removebg.png"
             alt="Sesiones Individuales"
