@@ -43,11 +43,12 @@ export const Navbar = ({ theme }) => {
           </div>
           {isMenuOpen && (
             <ul
-              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-2 w-52 shadow"
+              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-2 w-52 "
             >
-              <li className="border-b-2"><a href="/landing/contact"> Contact</a></li>
+              <li className="border-b-2"><a href="/"> Home</a></li>
               <li className="border-b-2 "><a href="#servicios">Servicios</a></li>
-              <li><a><Selector /></a></li>
+              <li className="border-b-2"><a href="/landing/contact"> Contacto</a></li>
+
             </ul>
           )}
         </div>

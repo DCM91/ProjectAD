@@ -122,9 +122,6 @@ export const Landing = ({ theme }) => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">Eventos</h2>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Ir</button>
-              </div>
             </div>
           </div>
 
@@ -137,9 +134,7 @@ export const Landing = ({ theme }) => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">Sesiones Individuales</h2>
-              <div className="card-actions justify-end">
-                <button className=" btn btn-primary">Ir</button>
-              </div>
+
             </div>
           </div>
 
@@ -152,9 +147,6 @@ export const Landing = ({ theme }) => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">Sessiones Grupales</h2>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Ir</button>
-              </div>
             </div>
           </div>
 
@@ -167,9 +159,6 @@ export const Landing = ({ theme }) => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">Recuerdos Inolvidables</h2>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Ir</button>
-              </div>
             </div>
           </div>
         </div>
