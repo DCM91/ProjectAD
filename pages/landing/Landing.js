@@ -158,7 +158,7 @@ useEffect(() => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure className="relative w-full h-60">
               <Image
-                src="/assets/TTs.jpg"
+                src="/assets/TTs.webp"
                 alt="Eventos"
                 fill
                 className="object-cover"
@@ -174,7 +174,7 @@ useEffect(() => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure className="relative w-full h-60">
               <Image
-                src="/assets/TTs.jpg"
+                src="/assets/TTs.webp"
                 alt="Sesiones Individuales"
                 fill
                 className="object-cover"
@@ -190,7 +190,7 @@ useEffect(() => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure className="relative w-full h-60">
               <Image
-                src="/assets/TTs.jpg"
+                src="/assets/TTs.webp"
                 alt="Sessiones Grupales"
                 fill
                 className="object-cover"
@@ -206,7 +206,7 @@ useEffect(() => {
           <div className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
             <figure className="relative w-full h-60">
               <Image
-                src="/assets/TTs.jpg"
+                src="/assets/TTs.webp"
                 alt="Recuerdos Inolvidables"
                 fill
                 className="object-cover"

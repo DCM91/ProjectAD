@@ -67,7 +67,7 @@ export const Navbar = ({ theme }) => {
             <div className="w-10 rounded-full">
               <img
                 alt="image Navbar component"
-                src="/assets/TTs.jpg"
+                src="/assets/TTs.webp"
               />
             </div>
           </div>
