@@ -55,12 +55,12 @@ useEffect(() => {
           {t?.heroTitle ?? "Mi pasion"}
         </h1>
 
-        {/* Opcional: subtítulo */}
+        {/* Subtítulo */}
         <p className="font-title text-center text-lg text-white max-w-2xl mx-auto leading-relaxed tracking-wide">
-  Soy Aroa Carmona, fotógrafa de vocación y enamorada de los pequeños detalles.<br/>
-  Me dedico a capturar momentos únicos en eventos, sesiones personales y fotografía animal.<br/>
-  Mi objetivo es crear imágenes que transmitan emoción, naturalidad y belleza auténtica.
-</p>
+          Soy Aroa Carmona, fotógrafa de vocación y enamorada de los pequeños detalles.<br/>
+          Me dedico a capturar momentos únicos en eventos, sesiones personales y fotografía animal.<br/>
+          Mi objetivo es crear imágenes que transmitan emoción, naturalidad y belleza auténtica.
+        </p>
 
         {/* Botones / RRSS */}
         <div className="flex justify-center gap-4 mt-4">
@@ -219,6 +219,15 @@ useEffect(() => {
           </div>
         </div>
       </div>
+      <div className="w-full p-2">
+        <p className="font-body text-white text-start text-3xl">AROA CARMONA</p><br/>
+        <p className="font-body text-white text-start text-l" >TEL: =34 677 XX XX XX</p>
+        <p className="font-body text-white text-start text-l" >Barcelona, Cataluña, España</p>
+        <p className="font-body text-white text-start text-l" >ACARMONA@BYPHNIX.COM</p>
+      </div>
+
+
+      {/* FINAL */}
     </div>
   );
 };

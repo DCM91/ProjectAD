@@ -22,7 +22,7 @@ export const Footer = ({theme}) => {
     <div data-theme={theme}>
         <footer  className="footer p-8 py-6 bg-accent text-accent-content" >
             <div style={{position: 'relative', fontSize:"large"}}>
-                <p className='font-body'><br/>Tienes dudas? Contacta conmigo.<br/><br/>Tambien puedes seguirnos en mis redes sociales</p>
+                <p className='font-body'><br/>Tienes dudas? Contacta conmigo.<br/><br/>Tambien puedes seguirme en mis redes sociales</p>
             </div> 
             <div>
                 <span className="footer-title" style={{fontSize:"large"}}>Social &nbsp; /Byphniix</span> 
