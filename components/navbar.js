@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Selector } from "./selector";
+import Link from "next/link";
 
 export const Navbar = ({ theme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,16 +46,16 @@ export const Navbar = ({ theme }) => {
             <ul
               className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-b-box z-[1] mt-2 w-52 "
             >
-              <li className="border-b-2"><a href="/"> Home</a></li>
-              <li className="border-b-2 "><a href="#servicios">Servicios</a></li>
-              <li className="border-b-2"><a href="/landing/contact"> Contacto</a></li>
+              <li className="border-b-2"><Link href="/"> Home</Link></li>
+              <li className="border-b-2 "><Link href="#servicios">Servicios</Link></li>
+              <li className="border-b-2"><Link href="/landing/contact"> Contacto</Link></li>
 
             </ul>
           )}
         </div>
       </div>
       <div className="navbar-center">
-        <a href="/" className="btn btn-ghost font-title font-bold text-4xl">Byphnix</a>
+        <Link href="/" className="btn btn-ghost font-title font-bold text-4xl">Byphnix</Link>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
@@ -67,7 +68,7 @@ export const Navbar = ({ theme }) => {
             <div className="w-10 rounded-full">
               <img
                 alt="image Navbar component"
-                src="/assets/TTs.webp"
+                src="/assets/logo.webp"
               />
             </div>
           </div>

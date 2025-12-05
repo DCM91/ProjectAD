@@ -1,117 +1,261 @@
 import React, { useEffect } from "react";
-import { BsInstagram } from "react-icons/bs";
-import en from "@/languages/en";
-import es from "@/languages/es";
-import fr from "@/languages/fr";
+import { BsInstagram, BsArrowDown } from "react-icons/bs";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import en from "@/languages/en";
+import es from "@/languages/es";
+import fr from "@/languages/fr";
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
-
   let t = en;
   if (router.locale === "es") t = es;
   if (router.locale === "fr") t = fr;
 
   useEffect(() => {
-    const elements = document.querySelectorAll(".reveal");
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
 
     const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fade-in-up");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Observer separate for the specific logo animation from original
+    const logoObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("revealed");
       });
     });
+    document.querySelectorAll(".reveal").forEach((el) => logoObserver.observe(el));
 
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      logoObserver.disconnect();
+    };
   }, []);
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://byphnix.com/#fotografa-aroad-carmona",
     name: "By Phnix - Fotografía by Aroa Carmona",
     image: "https://byphnix.com/assets/CARROUSEL1.webp",
     url: "https://byphnix.com",
-    telephone: "+34 677000000",
-    priceRange: "€€",
-    description:
-      "Fotógrafa profesional en Barcelona y Granollers especializada en eventos, sesiones individuales, fotografía animal y recuerdos familiares.",
+    description: "Fotógrafa profesional en Barcelona y Granollers especializada en eventos, sesiones individuales y fotografía animal.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Granollers",
       addressRegion: "Barcelona",
       addressCountry: "ES",
     },
-    areaServed: [
-      "Granollers",
-      "Barcelona",
-      "Vallès Oriental",
-      "Catalunya",
-      "España",
-    ],
-    sameAs: ["https://www.instagram.com/byphnix"],
-    serviceType: [
-      "Fotografía de eventos",
-      "Sesiones individuales",
-      "Sesiones grupales",
-      "Fotografía de mascotas",
-      "Reportajes familiares",
-    ],
   };
 
   return (
     <>
       <Head>
-        <title>
-          Fotógrafa profesional en Barcelona y Granollers | Aroa Carmona
-        </title>
-        <meta
-          name="description"
-          content="Aroa Carmona, fotógrafa profesional en Barcelona y Granollers. Fotografía de eventos, sesiones individuales, grupales y fotografía animal. Imágenes naturales y llenas de emoción."
-        />
-        <meta
-          name="keywords"
-          content="fotógrafa Barcelona, fotógrafa Granollers, fotógrafa profesional, fotografía de eventos Barcelona, sesiones de fotos Granollers, fotógrafa de mascotas, fotógrafa en Vallès Oriental, fotografía natural, reportajes fotográficos Barcelona"
-        />
-        <meta
-          property="og:title"
-          content="Fotógrafa profesional en Barcelona y Granollers | Aroa Carmona"
-        />
-        <meta
-          property="og:description"
-          content="Fotografía profesional en Barcelona y Granollers: eventos, sesiones personales, grupos y fotografía animal. Por Aroa Carmona."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="es_ES" />
-        <meta
-          property="og:image"
-          content="https://byphnix.com/assets/CARROUSEL1.webp"
-        />
-        <meta property="og:url" content="https://byphnix.com" />
-        <link rel="canonical" href="https://byphnix.com" />
+        <title>Aroa Carmona | Fotógrafa Profesional Barcelona</title>
+        <meta name="description" content="Portfolio de fotografía profesional. Capturando la esencia de momentos únicos en Barcelona y Granollers." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Custom styles for animations within this component */}
+        <style>{`
+          .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+          }
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .reveal-on-scroll {
+            opacity: 0; 
+          }
+          .reveal {
+            transition: all 1s ease-out;
+          }
+          .revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+        `}</style>
       </Head>
 
-      <div
-        data-theme={theme}
-        className="pb-6 gap-y-6 grid min-h-full bg-transparent"
-      >
-        <main>
-          {/* ---------- HERO SECTION ---------- */}
-          <section
-            className="p-2 pt-0  place-self-center w-full"
-            aria-labelledby="hero-heading"
-          >
-            <div className="relative w-80 h-60 mx-auto">
+      <div data-theme={theme} className="min-h-screen bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white overflow-hidden">
+        
+        {/* ---------- HERO SECTION ---------- */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image with Parallax-like feel (static for perf, can be fixed) */}
+          <div className="absolute inset-0 z-0">
+             <Image
+                src="/assets/CARROUSEL1.webp" // Using one of your best shots as hero bg
+                alt="Background texture"
+                fill
+                className="object-cover opacity-40 grayscale-[20%]"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-neutral-900" />
+          </div>
+
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <span className="tracking-[0.3em] text-xs md:text-sm uppercase text-orange-400 font-bold mb-4 block">
+                    Portfolio & Gallery
+                </span>
+                <h1 className="font-title text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+                    Capturando<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-500">Esencia</span>
+                </h1>
+            </div>
+            
+            <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                Soy <strong>Aroa Carmona</strong>. Transformo momentos efímeros en recuerdos eternos. 
+                Fotógrafa profesional en Barcelona y Granollers.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+              <Link 
+                href="/landing/contact" 
+                className="px-8 py-3 bg-orange-600 text-white font-semibold tracking-wide hover:bg-orange-700 transition-all duration-300 rounded-lg"
+              >
+                RESERVAR SESIÓN
+              </Link>
+              <Link 
+                href="#gallery" 
+                className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-white transition-all duration-300 rounded-lg"
+              >
+                VER GALERÍA
+              </Link>
+            </div>
+          </div>
+
+          {/* Scrolldown indicator */}
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+             <BsArrowDown className="text-3xl text-white"/>
+          </div>
+        </section>
+
+        {/* ---------- SERVICES (Minimalist) ---------- */}
+        <section id="servicios" className="py-24 px-4 bg-neutral-900 relative">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16 reveal-on-scroll">
+                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Mis Servicios</h2>
+                    <div className="h-1 w-20 bg-orange-500 mx-auto"></div>
+                    <p className="mt-4 text-gray-400 font-light">Especialización y pasión en cada disparo</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[ 
+                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/Tibidabo.jpg" },
+                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL5.webp" },
+                        { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL4.webp" },
+                        { title: "Grupos", desc: "Familias y amigos unidos por un instante.", img: "/assets/CARROUSEL3.webp" }
+                    ].map((service, idx) => (
+                        <div key={idx} className="rounded-2xl group relative h-96 w-full overflow-hidden cursor-pointer reveal-on-scroll delay-100">
+                             <Image
+                                src={service.img}
+                                alt={service.title}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity duration-300" />
+                            <div className="absolute bottom-0 left-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 className="font-title text-2xl text-white mb-2">{service.title}</h3>
+                                <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                    {service.desc}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* ---------- MASONRY GALLERY ---------- */}
+        <section id="gallery" className="py-20 bg-neutral-800">
+             <div className="max-w-7xl mx-auto px-4">
+                <div className="flex justify-between items-end mb-12 reveal-on-scroll">
+                    <div>
+                        <h2 className="font-title text-3xl md:text-4xl text-white">Últimos Trabajos</h2>
+                        <p className="text-gray-400 mt-2">Una selección de mis capturas favoritas</p>
+                    </div>
+                     <a href="https://www.instagram.com/byphnix" target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors">
+                        <BsInstagram />
+                        <span>Seguir en Instagram</span>
+                     </a>
+                </div>
+
+                {/* Masonry Layout simulation using CSS Columns */}
+                <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                     {[
+                        "CARROUSEL2.webp",
+                        "CARROUSEL4.webp",
+                        "Tibidabo.jpg", // Different aspect ratio helps masonry look
+                        "CARROUSEL3.webp",
+                        "logo.webp",
+                        "CARROUSEL5.webp",
+                     ].map((img, i) => (
+                        <div key={i} className="break-inside-avoid relative group rounded-2xl overflow-hidden reveal-on-scroll">
+                             <Image
+                                src={`/assets/${img}`}
+                                alt="Portfolio item"
+                                width={500}
+                                height={700} // Aspact ratio placeholder, style handles visual
+                                className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-white font-title text-xl tracking-widest border border-white px-4 py-2">VER</span>
+                            </div>
+                        </div>
+                     ))}
+                </div>
+                
+                <div className="mt-12 text-center md:hidden">
+                    <a href="https://www.instagram.com/byphnix" className="btn btn-outline text-white">Ver más en Instagram</a>
+                </div>
+             </div>
+        </section>
+
+        {/* ---------- CONTACT BANNER ---------- */}
+        <section className="py-12 bg-neutral-900 text-center px-4">
+            <div className="reveal-on-scroll max-w-2xl mx-auto border border-white/10 p-10 md:p-16 rounded-3xl bg-neutral-800/30">
+                <h2 className="font-title text-4xl mb-6 text-white">¿Hablamos?</h2>
+                <p className="text-gray-300 mb-8 text-lg font-light">
+                    Estoy disponible para nuevos proyectos y colaboraciones. <br/>
+                    Cuéntame tu idea y creemos algo mágico juntos.
+                </p>
+                <Link href="/landing/contact" className="btn btn-primary btn-lg px-10 rounded-full text-white shadow-lg shadow-orange-500/20">
+                    Contactar Ahora
+                </Link>
+            </div>
+        </section>
+
+        {/* ---------- SIGNATURE LOGO ---------- */}
+        <section className="pb-20 pt-10">
+             <div className="relative w-80 h-60 mx-auto">
               <Image
-                src="/assets/TTs-removebg_white.png"
+                src="/assets/logo_white.png"
                 alt="By Phnix - Fotografía profesional en Barcelona y Granollers, logo de Aroa Carmona"
                 fill
                 className="object-contain"
@@ -122,200 +266,8 @@ export const Landing = ({ theme }) => {
                 By Aroa Carmona
               </p>
             </div>
+        </section>
 
-            <h1
-              id="hero-heading"
-              className="font-title text-center text-4xl font-bold mt-1 text-white"
-            >
-              Fotógrafa profesional en Barcelona y Granollers
-            </h1>
-
-            <p className="font-title text-center text-lg text-white max-w-2xl mx-auto mt-3">
-              Soy <strong>Aroa Carmona</strong>, fotógrafa profesional en{" "}
-              <strong>Granollers</strong> y <strong>Barcelona</strong>. Capturo
-              momentos únicos en{" "}
-              <strong>
-                eventos, sesiones personales, grupos y fotografía animal
-              </strong>
-              .
-            </p>
-
-            {/* Botones */}
-            <div className="flex justify-center gap-4 my-8">
-              <Link href="/landing/contact" className="btn btn-secondary">
-                {t?.heroSecondaryCta ?? "Contactar para una sesión"}
-              </Link>
-              <a
-                href="https://www.instagram.com/byphnix"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-ghost btn-circle text-white"
-                aria-label="Instagram"
-              >
-                <BsInstagram className="w-12 h-12" />
-              </a>
-            </div>
-
-            {/* ---------- LOOP CAROUSEL ---------- */}
-            <div
-              id="loopCarousel"
-              className="carousel carousel-center bg-transparent max-w-screen mx-auto space-x-4 px-4 mt-8"
-            >
-              {/* 5 ORIGINALES */}
-              {[
-                "CARROUSEL4.webp",
-                "CARROUSEL2.webp",
-                "CARROUSEL3.webp",
-                "CARROUSEL1.webp",
-                "CARROUSEL5.webp",
-              ].map((img, i) => (
-                <div
-                  key={i}
-                  className="carousel-item relative w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80"
-                >
-                  <Image
-                    src={`/assets/${img}`}
-                    alt="Fotografía profesional"
-                    fill
-                    className="object-cover rounded-box"
-                  />
-                </div>
-              ))}
-            </div>
-          </section>{" "}
-          {/* CIERRE CORRECTO DEL HERO */}
-          {/* SERVICIOS */}
-          <section aria-labelledby="servicios-heading">
-            <h2
-              className="text-center text-3xl text-warning pb-4 mt-4"
-              id="servicios-heading"
-            >
-              Servicios de fotografía en Barcelona y Granollers
-            </h2>
-
-            <p className="font-body text-center text-white max-w-3xl mx-auto mb-2 px-4">
-              Ofrezco servicios de fotografía profesional en{" "}
-              <strong>Granollers</strong>, <strong>Barcelona</strong> y
-              alrededores: eventos especiales, sesiones individuales y grupales
-              y recuerdos con tus personas y animales más importantes.
-            </p>
-
-            <div className="p-2 flex flex-wrap gap-5 justify-center">
-              {/* Card 1 */}
-              <article className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
-                <figure className="relative w-full h-60">
-                  <Image
-                    src="/assets/TTs.webp"
-                    alt="Fotografía de eventos en Barcelona y Granollers: celebraciones, cumpleaños y ocasiones especiales"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                </figure>
-                <div className="card-body ">
-                  <h3 className="card-title ">Eventos</h3>
-                  <p className="text-sm">
-                    Cobertura fotográfica de{" "}
-                    <strong>eventos en Barcelona y Granollers</strong>:
-                    celebraciones, cumpleaños, reuniones y encuentros
-                    especiales.
-                  </p>
-                </div>
-              </article>
-
-              {/* Card 2 */}
-              <article className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
-                <figure className="relative w-full h-60">
-                  <Image
-                    src="/assets/TTs.webp"
-                    alt="Sesiones de fotos individuales en Granollers: retratos naturales y profesionales"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">Sesiones Individuales</h3>
-                  <p className="text-sm">
-                    Sesiones de retrato personal en exterior o interior en
-                    <strong> Granollers</strong> y <strong>Barcelona</strong>,
-                    pensadas para que te sientas tú mismo delante de la cámara.
-                  </p>
-                </div>
-              </article>
-
-              {/* Card 3 */}
-              <article className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
-                <figure className="relative w-full h-60">
-                  <Image
-                    src="/assets/TTs.webp"
-                    alt="Sesiones de fotos grupales y familiares en Barcelona y Vallès Oriental"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">Sesiones Grupales</h3>
-                  <p className="text-sm">
-                    <strong>Sesiones grupales y familiares</strong> para
-                    capturar vuestra complicidad: amigos, familia, pareja o
-                    equipo.
-                  </p>
-                </div>
-              </article>
-
-              {/* Card 4 */}
-              <article className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
-                <figure className="relative w-full h-60">
-                  <Image
-                    src="/assets/Tibidabo.jpg"
-                    alt="Recuerdos fotográficos inolvidables con tus seres queridos y mascotas"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">Recuerdos Inolvidables</h3>
-                  <p className="text-sm">
-                    Reportajes pensados para convertir tus momentos importantes
-                    en <strong>recuerdos visuales</strong> que puedas revivir
-                    siempre.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </section>
-          {/* INFO / CONTACTO */}
-          <section
-            className="w-full p-2 mt-4"
-            id="contacto"
-            aria-labelledby="contacto-heading"
-          >
-            <br />
-            <p className="font-body text-white text-start text-base md:text-lg">
-              AROA CARMONA · Fotógrafa profesional
-            </p>
-            <p className="font-body text-white text-start text-base md:text-lg">
-              TEL: +34 677 XX XX XX
-            </p>
-            <p className="font-body text-white text-start text-base md:text-lg">
-              Granollers · Barcelona · Catalunya · España
-            </p>
-            <p className="font-body text-white text-start text-base md:text-lg">
-              Email:{" "}
-              <a
-                href="mailto:acarmona@byphnix.com"
-                className="underline hover:no-underline"
-              >
-                ACARMONA@BYPHNIX.COM
-              </a>
-            </p>
-          </section>
-        </main>
-
-        {/* FINAL */}
       </div>
     </>
   );

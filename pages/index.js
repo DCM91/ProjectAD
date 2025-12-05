@@ -3,7 +3,9 @@ import { Layout } from "../components/Layout"
 import en from "@/languages/en"
 import es from "@/languages/es"
 import fr from "@/languages/fr"
+// import { LandingPremium } from "./landing/LandingPremium"
 import { Landing } from "./landing/Landing"
+
 
 
 export default function Home() {
