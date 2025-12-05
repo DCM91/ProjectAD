@@ -50,24 +50,53 @@ export const Landing = ({ theme }) => {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "By Phnix - Fotografía by Aroa Carmona",
-    image: "https://byphnix.com/assets/CARROUSEL1.webp",
-    url: "https://byphnix.com",
-    description: "Fotógrafa profesional en Barcelona y Granollers especializada en eventos, sesiones individuales y fotografía animal.",
+    "@type": "ProfessionalService",
+    name: "Aroa Carmona Fotografía - By Phnix",
+    image: "https://byphnix.vercel.app/assets/CARROUSEL1.webp",
+    url: "https://byphnix.vercel.app",
+    telephone: "+34 677 00 00 00",
+    description: "Servicios de fotografía profesional en Barcelona y Granollers por Aroa Carmona. Bodas, eventos, mascotas y sesiones de retrato.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Granollers",
       addressRegion: "Barcelona",
       addressCountry: "ES",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.607,
+      longitude: 2.287
+    },
+    areaServed: ["Granollers", "Barcelona", "Vallès Oriental", "Catalunya"],
+    sameAs: [
+      "https://www.instagram.com/byphnix"
+    ],
+    priceRange: "€€"
   };
 
   return (
     <>
       <Head>
-        <title>Aroa Carmona | Fotógrafa Profesional Barcelona</title>
-        <meta name="description" content="Portfolio de fotografía profesional. Capturando la esencia de momentos únicos en Barcelona y Granollers." />
+        <title>Aroa Carmona | Fotografía en Barcelona y Granollers</title>
+        <meta name="description" content="Aroa Carmona, fotógrafa en Barcelona y Granollers. Especialista en capturar momentos únicos: eventos, bodas, mascotas y retratos. Web desarrollada por Daniel Castro." />
+        <meta name="keywords" content="Aroa Carmona, Fotografía Barcelona, Fotografía Granollers, Fotógrafa de bodas, Sesiones de fotos, Daniel Castro, Daniel Castro Martín, Desarrollador Web" />
+        <meta name="author" content="Daniel Castro Martín" />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://byphnix.vercel.app/" />
+        <meta property="og:title" content="Aroa Carmona | Fotografía Profesional en Barcelona y Granollers" />
+        <meta property="og:description" content="Descubre el portfolio de Aroa Carmona. Fotografía emocional y creativa en Barcelona y Granollers. Creado por Daniel Castro." />
+        <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.webp" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://byphnix.vercel.app/" />
+        <meta property="twitter:title" content="Aroa Carmona | Fotografía Barcelona" />
+        <meta property="twitter:description" content="Fotografía profesional en Barcelona y Granollers. Aroa Carmona captura tu esencia." />
+        <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.webp" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

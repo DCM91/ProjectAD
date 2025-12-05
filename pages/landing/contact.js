@@ -59,29 +59,22 @@ const Contact = () => {
     }
   };
 
-  const seoTitle = "Contacto | Fotógrafa profesional en Barcelona y Granollers | Aroa Carmona";
-  const seoDescription = "Contacta con Aroa Carmona, fotógrafa profesional en Barcelona y Granollers. Solicita información para sesiones de fotos, eventos, retratos, fotografía animal y reportajes en la zona de Barcelona y Vallès Oriental.";
+  const seoTitle = "Contacto | Aroa Carmona Fotografía Barcelona y Granollers";
+  const seoDescription = "Contacta con Aroa Carmona. Reserva tu sesión de fotos en Barcelona y Granollers: bodas, retratos y mascotas. Web desarrollada por Daniel Castro.";
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: seoTitle,
     description: seoDescription,
-    url: "https://byphnix.com/landing/contact",
+    url: "https://byphnix.vercel.app/landing/contact",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://byphnix.com/landing/contact",
+      "@id": "https://byphnix.vercel.app/landing/contact",
     },
-    about: {
-      "@type": "Person",
-      name: "Aroa Carmona",
-      jobTitle: "Fotógrafa profesional",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Granollers",
-        addressRegion: "Barcelona",
-        addressCountry: "ES",
-      },
+    author: {
+       "@type": "Person",
+       name: "Daniel Castro Martín"
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -97,13 +90,15 @@ const Contact = () => {
       <Head>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <meta name="keywords" content="contacto fotógrafa Barcelona, contacto fotógrafa Granollers, contactar con Aroa Carmona, sesiones de fotos Barcelona, presupuestos fotografía Granollers, fotógrafa Vallès Oriental contacto" />
+        <meta name="keywords" content="contacto fotógrafa Barcelona, contacto fotógrafa Granollers, Aroa Carmona contacto, Daniel Castro Martín, sesiones de fotos Barcelona" />
+        <meta name="author" content="Daniel Castro Martín" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://byphnix.com/landing/contact" />
+        <meta property="og:url" content="https://byphnix.vercel.app/landing/contact" />
         <meta property="og:locale" content="es_ES" />
-        <link rel="canonical" href="https://byphnix.com/landing/contact" />
+        <link rel="canonical" href="https://byphnix.vercel.app/landing/contact" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
