@@ -37,9 +37,6 @@ export const Footer = ({ theme }) => {
             Escríbeme y te ayudaré a planificar tu sesión de fotos en{" "}
             <strong>Granollers, Barcelona o Vallès Oriental</strong>: eventos,
             retratos, fotografía animal o reportajes familiares.
-            <br />
-            También puedes seguir mi trabajo y ver ejemplos de sesiones en mis
-            redes sociales.
           </p>
         </section>
 

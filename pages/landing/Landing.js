@@ -118,7 +118,7 @@ export const Landing = ({ theme }) => {
                 priority
               />
 
-              <p className="font-title font-bold text-xl text-white grid h-full place-content-end pb-7 pr-5 opacity-0 translate-y-3 reveal">
+              <p className="font-title font-bold text-xl text-white grid h-full place-content-end pb-7 pr-5 opacity-0 translate-y-5 reveal">
                 By Aroa Carmona
               </p>
             </div>
@@ -141,7 +141,7 @@ export const Landing = ({ theme }) => {
             </p>
 
             {/* Botones */}
-            <div className="flex justify-center gap-4 mt-4">
+            <div className="flex justify-center gap-4 my-8">
               <Link href="/landing/contact" className="btn btn-secondary">
                 {t?.heroSecondaryCta ?? "Contactar para una sesión"}
               </Link>
@@ -213,7 +213,7 @@ export const Landing = ({ theme }) => {
                   />
                 </figure>
                 <div className="card-body ">
-                  <h3 className="card-title text-secondary">Eventos</h3>
+                  <h3 className="card-title ">Eventos</h3>
                   <p className="text-sm">
                     Cobertura fotográfica de{" "}
                     <strong>eventos en Barcelona y Granollers</strong>:
