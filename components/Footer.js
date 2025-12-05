@@ -19,6 +19,7 @@ export const Footer = ({ theme }) => {
   return (
     <div data-theme={theme}>
       <footer
+        
         className="footer p-4 px-8 bg-accent text-accent-content"
         aria-label="Pie de página de By Phnix, fotografía de Aroa Carmona en Barcelona y Granollers"
       >
@@ -45,10 +46,10 @@ export const Footer = ({ theme }) => {
           className="ml-auto"
           aria-label="Redes sociales y contacto directo de Aroa Carmona"
         >
-          <h3 className="footer-title text-base sm:text-lg mb-2">
+          <h3 className="footer-title text-base sm:text-lg mb-2 ">
             Sígueme · <span className="font-semibold">@byphnix</span>
           </h3>
-          <div className="grid grid-flow-col gap-4 items-center">
+          <div className="flex justify-end gap-4 w-full mr-2">
             <a
               href="https://www.instagram.com/byphnix"
               target="_blank"

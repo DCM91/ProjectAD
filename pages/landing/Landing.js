@@ -106,7 +106,7 @@ export const Landing = ({ theme }) => {
         <main>
           {/* ---------- HERO SECTION ---------- */}
           <section
-            className="p-2 place-self-center w-full"
+            className="p-2 pt-0  place-self-center w-full"
             aria-labelledby="hero-heading"
           >
             <div className="relative w-80 h-60 mx-auto">
