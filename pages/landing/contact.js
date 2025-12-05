@@ -113,12 +113,12 @@ const Contact = () => {
       <div className="min-h-screen flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-2xl">
           {/* Título SEO claro */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-center mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-center mb-2 text-white">
             {t?.contactTitle ??
               "Contactar con Aroa Carmona · Fotógrafa en Barcelona y Granollers"}
           </h1>
 
-          <p className="text-center opacity-80 mb-8">
+          <p className="text-center opacity-80 mb-8 text-white" >
             {t?.contactSubtitle ??
               "Cuéntame qué tipo de sesión de fotos necesitas en Barcelona, Granollers o alrededores (eventos, retratos, fotografía animal, familia...) y te responderé lo antes posible."}
           </p>

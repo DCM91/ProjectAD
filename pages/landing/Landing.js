@@ -180,7 +180,7 @@ export const Landing = ({ theme }) => {
               </p>
             </div>
 
-            <h1 id="hero-heading" className="font-title text-center text-4xl font-bold mt-1">
+            <h1 id="hero-heading" className="font-title text-center text-4xl font-bold mt-1 text-white">
               Fotógrafa profesional en Barcelona y Granollers
             </h1>
 
