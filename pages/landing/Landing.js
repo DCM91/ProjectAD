@@ -29,66 +29,6 @@ export const Landing = ({ theme }) => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const container = document.getElementById("loopCarousel");
-    if (!container) return;
-
-    const items = container.getElementsByClassName("carousel-item");
-    if (!items.length) return;
-
-    const totalItems = items.length;
-    const logicalItems = totalItems / 2;
-
-    const getStep = () => {
-      if (items.length < 2) return 0;
-      const first = items[0];
-      const second = items[1];
-
-      if (!first || !second) return 0;
-      if (!first.getBoundingClientRect || !second.getBoundingClientRect)
-        return 0;
-
-      return second.offsetLeft - first.offsetLeft;
-    };
-
-    let step = getStep();
-    if (!step) return;
-
-    let index = 1;
-    container.scrollLeft = step * index;
-
-    const handleResize = () => {
-      step = getStep();
-      if (!step) return;
-      container.scrollLeft = step * index;
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    const intervalId = setInterval(() => {
-      if (!step) return;
-
-      index += 1;
-
-      container.scrollTo({
-        left: step * index,
-        behavior: "smooth",
-      });
-
-      setTimeout(() => {
-        if (index >= totalItems - 2) {
-          index = index - logicalItems;
-          container.scrollLeft = step * index;
-        }
-      }, 500);
-    }, 3000);
-
-    return () => {
-      clearInterval(intervalId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -165,7 +105,10 @@ export const Landing = ({ theme }) => {
       >
         <main>
           {/* ---------- HERO SECTION ---------- */}
-          <section className="p-2 place-self-center w-full" aria-labelledby="hero-heading">
+          <section
+            className="p-2 place-self-center w-full"
+            aria-labelledby="hero-heading"
+          >
             <div className="relative w-80 h-60 mx-auto">
               <Image
                 src="/assets/TTs-removebg_white.png"
@@ -180,14 +123,21 @@ export const Landing = ({ theme }) => {
               </p>
             </div>
 
-            <h1 id="hero-heading" className="font-title text-center text-4xl font-bold mt-1 text-white">
+            <h1
+              id="hero-heading"
+              className="font-title text-center text-4xl font-bold mt-1 text-white"
+            >
               Fotógrafa profesional en Barcelona y Granollers
             </h1>
 
             <p className="font-title text-center text-lg text-white max-w-2xl mx-auto mt-3">
               Soy <strong>Aroa Carmona</strong>, fotógrafa profesional en{" "}
-              <strong>Granollers</strong> y <strong>Barcelona</strong>.
-              Capturo momentos únicos en <strong>eventos, sesiones personales, grupos y fotografía animal</strong>.
+              <strong>Granollers</strong> y <strong>Barcelona</strong>. Capturo
+              momentos únicos en{" "}
+              <strong>
+                eventos, sesiones personales, grupos y fotografía animal
+              </strong>
+              .
             </p>
 
             {/* Botones */}
@@ -231,31 +181,10 @@ export const Landing = ({ theme }) => {
                   />
                 </div>
               ))}
-
-              {/* 5 DUPLICADAS */}
-              {[
-                "CARROUSEL4.webp",
-                "CARROUSEL2.webp",
-                "CARROUSEL3.webp",
-                "CARROUSEL1.webp",
-                "CARROUSEL5.webp",
-              ].map((img, i) => (
-                <div
-                  key={`clone-${i}`}
-                  className="carousel-item relative w-4/5 h-[50vh] sm:w-1/2 sm:h-64 md:w-1/3 md:h-72 lg:w-1/4 lg:h-80"
-                >
-                  <Image
-                    src={`/assets/${img}`}
-                    alt="Fotografía profesional"
-                    fill
-                    className="object-cover rounded-box"
-                  />
-                </div>
-              ))}
             </div>
-
-          </section> {/* ← ← ← CIERRE CORRECTO DEL HERO */}
- {/* SERVICIOS */}
+          </section>{" "}
+          {/* CIERRE CORRECTO DEL HERO */}
+          {/* SERVICIOS */}
           <section aria-labelledby="servicios-heading">
             <h2
               className="text-center text-3xl text-warning pb-4 mt-4"
@@ -286,9 +215,10 @@ export const Landing = ({ theme }) => {
                 <div className="card-body">
                   <h3 className="card-title">Eventos</h3>
                   <p className="text-sm">
-                    Cobertura fotográfica de <strong>eventos en Barcelona y
-                    Granollers</strong>: celebraciones, cumpleaños, reuniones y
-                    encuentros especiales.
+                    Cobertura fotográfica de{" "}
+                    <strong>eventos en Barcelona y Granollers</strong>:
+                    celebraciones, cumpleaños, reuniones y encuentros
+                    especiales.
                   </p>
                 </div>
               </article>
@@ -357,14 +287,12 @@ export const Landing = ({ theme }) => {
               </article>
             </div>
           </section>
-
           {/* INFO / CONTACTO */}
           <section
             className="w-full p-2 mt-4"
             id="contacto"
             aria-labelledby="contacto-heading"
           >
-
             <br />
             <p className="font-body text-white text-start text-base md:text-lg">
               AROA CARMONA · Fotógrafa profesional
@@ -384,7 +312,6 @@ export const Landing = ({ theme }) => {
                 ACARMONA@BYPHNIX.COM
               </a>
             </p>
-
           </section>
         </main>
 
