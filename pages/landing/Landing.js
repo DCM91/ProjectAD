@@ -269,7 +269,7 @@ export const Landing = ({ theme }) => {
               <article className="card bg-base-100 w-80 image-full shadow-xl transform transition-transform duration-300 hover:scale-110">
                 <figure className="relative w-full h-60">
                   <Image
-                    src="/assets/TTs.webp"
+                    src="/assets/Tibidabo.jpg"
                     alt="Recuerdos fotográficos inolvidables con tus seres queridos y mascotas"
                     fill
                     className="object-cover"
