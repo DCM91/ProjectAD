@@ -17,7 +17,7 @@ export const Layout = ({ title = "Byphnix" , children}) => {
 
 
   return (
-    <div data-theme={theme} className='h-full grid w-full bg-[url(/assets/Tibidabo.jpg)] bg-cover'>
+    <div data-theme={theme} className='h-full grid w-full bg-black'>
         <Head>
             <title>{title}</title>
             <meta name="description" content="Byphnix" />

@@ -149,10 +149,10 @@ export const Landing = ({ theme }) => {
                 href="https://www.instagram.com/byphnix"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-ghost btn-circle scale-150"
+                className="btn btn-ghost btn-circle text-white"
                 aria-label="Instagram"
               >
-                <BsInstagram />
+                <BsInstagram className="w-12 h-12" />
               </a>
             </div>
 
@@ -212,8 +212,8 @@ export const Landing = ({ theme }) => {
                     sizes="320px"
                   />
                 </figure>
-                <div className="card-body">
-                  <h3 className="card-title">Eventos</h3>
+                <div className="card-body ">
+                  <h3 className="card-title text-secondary">Eventos</h3>
                   <p className="text-sm">
                     Cobertura fotográfica de{" "}
                     <strong>eventos en Barcelona y Granollers</strong>:
