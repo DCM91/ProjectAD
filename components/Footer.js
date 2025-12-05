@@ -27,12 +27,7 @@ export const Footer = ({ theme }) => {
           className="max-w-xl"
           aria-labelledby="footer-contact-heading"
         >
-          <h2
-            id="footer-contact-heading"
-            className="font-body text-lg sm:text-xl font-semibold mb-2"
-          >
-            ¿Tienes dudas sobre tu sesión de fotos en Barcelona o Granollers?
-          </h2>
+
           <p className="font-body text-sm sm:text-base leading-relaxed">
             Escríbeme y te ayudaré a planificar tu sesión de fotos en{" "}
             <strong>Granollers, Barcelona o Vallès Oriental</strong>: eventos,
@@ -72,11 +67,12 @@ export const Footer = ({ theme }) => {
         </section>
 
         {/* Línea legal / SEO local */}
-        <div className="w-full col-span-full mt-4 border-t border-base-100 pt-2 text-xs opacity-80">
+        <div className="w-full col-span-full border-t border-base-100 pt-2 text-s opacity-80">
           <p className="font-body">
-            © {currentYear} By Phnix · Fotografía by Aroa Carmona · Fotógrafa
-            profesional en Barcelona, Granollers y Vallès Oriental.
+            © {currentYear} Fotografías por Aroa Carmona 
+            <br/><span className="font-semibold">Desarrollado por Daniel Castro Martín</span>
           </p>
+
         </div>
       </footer>
     </div>
