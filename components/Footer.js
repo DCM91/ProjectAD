@@ -27,12 +27,16 @@ export const Footer = ({ theme }) => {
           className="max-w-xl"
           aria-labelledby="footer-contact-heading"
         >
-
+          <h2
+            id="footer-contact-heading"
+            className="font-body text-lg sm:text-xl font-semibold mb-2"
+          >
+            ¿Tienes dudas sobre tu sesión de fotos?
+          </h2>
           <p className="font-body text-sm sm:text-base leading-relaxed">
             Escríbeme y te ayudaré a planificar tu sesión de fotos en{" "}
             <strong>Granollers, Barcelona o Vallès Oriental</strong>: eventos,
             retratos, fotografía animal o reportajes familiares.
-            <br />
             <br />
             También puedes seguir mi trabajo y ver ejemplos de sesiones en mis
             redes sociales.
