@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import en from "@/languages/en";
 import es from "@/languages/es";
@@ -7,9 +7,11 @@ import { Layout } from "@/components/Layout";
 import Head from "next/head";
 import { MdEmail, MdLocationOn, MdCameraAlt } from "react-icons/md";
 import { BsInstagram } from "react-icons/bs";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const router = useRouter();
+  const formRef = useRef();
 
   // i18n
   let t = en;
@@ -17,8 +19,8 @@ const Contact = () => {
   if (router.locale === "fr") t = fr;
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     subject: "",
     message: "",
   });
@@ -39,24 +41,27 @@ const Contact = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
 
-    try {
-      // Mock API call simulation
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log("Form enviado:", form);
-      setStatus("success");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      setStatus("error");
-    } finally {
-      setLoading(false);
-    }
+    const YOUR_SERVICE_ID = "service_rhb20ms"; 
+    const YOUR_TEMPLATE_ID = "template_u5vulff";
+    const YOUR_PUBLIC_KEY = "hWoQ-IVSv8qoU_Bn4";
+
+    emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, formRef.current, YOUR_PUBLIC_KEY)
+      .then((result) => {
+          console.log(result.text);
+          setStatus("success");
+          setForm({ user_name: "", user_email: "", subject: "", message: "" });
+      }, (error) => {
+          console.log(error.text);
+          setStatus("error");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const seoTitle = "Contacto | Aroa Carmona Fotografía Barcelona y Granollers";
@@ -164,19 +169,20 @@ const Contact = () => {
                     </div>
                 </div>
 
-                {/* Right Column: Form */}
                 <div className="bg-neutral-800/40 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-sm">
                     <h2 className="text-2xl font-title text-white mb-6">Envíame un mensaje</h2>
-                    <form className="space-y-5" onSubmit={handleSubmit}>
+                    
+                    <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
+                        
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="form-control">
                                 <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Nombre</label>
                                 <input
-                                    name="name"
+                                    name="user_name" 
                                     type="text"
                                     className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
                                     placeholder="Tu nombre"
-                                    value={form.name}
+                                    value={form.user_name}
                                     onChange={handleChange}
                                     required
                                 />
@@ -184,11 +190,11 @@ const Contact = () => {
                             <div className="form-control">
                                 <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Email</label>
                                 <input
-                                    name="email"
+                                    name="user_email"
                                     type="email"
                                     className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
                                     placeholder="tucorreo@ejemplo.com"
-                                    value={form.email}
+                                    value={form.user_email}
                                     onChange={handleChange}
                                     required
                                 />
