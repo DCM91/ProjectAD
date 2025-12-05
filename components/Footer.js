@@ -1,82 +1,89 @@
 import React from "react";
+import Link from "next/link";
 import { BsInstagram } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-
-import en from "@/languages/en";
-import es from "@/languages/es";
-import fr from "@/languages/fr";
 import { useRouter } from "next/router";
 
 export const Footer = ({ theme }) => {
   const router = useRouter();
-
-  let t = es; // español por defecto
-  if (router.locale === "en") t = en;
-  if (router.locale === "fr") t = fr;
-
   const currentYear = new Date().getFullYear();
 
   return (
-    <div data-theme={theme}>
-      <footer
-        
-        className="footer p-4 px-8 bg-accent text-accent-content"
-        aria-label="Pie de página de By Phnix, fotografía de Aroa Carmona en Barcelona y Granollers"
-      >
-        {/* Bloque de texto / info rápida */}
-        <section
-          className="max-w-xl"
-          aria-labelledby="footer-contact-heading"
-        >
-          <h2
-            id="footer-contact-heading"
-            className="font-body text-lg sm:text-xl font-semibold mb-2"
-          >
-            ¿Tienes dudas sobre tu sesión de fotos?
-          </h2>
-          <p className="font-body text-sm sm:text-base leading-relaxed">
-            Escríbeme y te ayudaré a planificar tu sesión de fotos en{" "}
-            <strong>Granollers, Barcelona o Vallès Oriental</strong>: eventos,
-            retratos, fotografía animal o reportajes familiares.
+    <footer className="bg-black text-neutral-content border-t border-neutral-800">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center md:text-left">
+          
+          {/* Column 1: Brand & Desc */}
+          <div className="space-y-4">
+            <h2 className="font-title text-3xl text-white tracking-wide">
+              BY PHNIX
+            </h2>
+            <p className="text-gray-400 font-light text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
+              Capturando momentos efímeros para convertirlos en recuerdos eternos. 
+              Fotografía profesional en Barcelona y Granollers.
+            </p>
+          </div>
+
+          {/* Column 2: Navigation */}
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-title text-lg text-white mb-2 uppercase tracking-widest">Explorar</h3>
+            <Link href="/" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+              Inicio
+            </Link>
+            <Link href="/#servicios" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+              Servicios
+            </Link>
+            <Link href="/#gallery" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+              Galería
+            </Link>
+            <Link href="/landing/contact" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
+              Contacto
+            </Link>
+          </div>
+
+          {/* Column 3: Contact & Social */}
+          <div className="space-y-4">
+            <h3 className="font-title text-lg text-white mb-2 uppercase tracking-widest">Conecta</h3>
+             <div className="flex justify-center md:justify-start gap-4">
+                <a
+                  href="https://www.instagram.com/byphnix"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="p-3 rounded-full bg-neutral-900 border border-neutral-800 text-gray-400 hover:text-white hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300"
+                  aria-label="Instagram"
+                >
+                  <BsInstagram size={20} />
+                </a>
+                <Link
+                  href="/landing/contact"
+                  className="p-3 rounded-full bg-neutral-900 border border-neutral-800 text-gray-400 hover:text-white hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300"
+                  aria-label="Email"
+                >
+                  <MdEmail size={20} />
+                </Link>
+             </div>
+             <p className="text-xs text-gray-500 mt-4">
+               acarmona@byphnix.com
+             </p>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-800 to-transparent my-10" />
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+          <p>
+            &copy; {currentYear} Aroa Carmona. Todos los derechos reservados.
           </p>
-        </section>
-
-        {/* Redes sociales / contacto rápido */}
-        <section
-          className="ml-auto"
-          aria-label="Redes sociales y contacto directo de Aroa Carmona"
-        >
-          <h3 className="footer-title text-base sm:text-lg mb-2 ">
-            Sígueme · <span className="font-semibold">@byphnix</span>
-          </h3>
-          <div className="flex justify-end gap-4 w-full mr-2">
-            <a
-              href="https://www.instagram.com/byphnix"
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Ver el perfil de Instagram de Aroa Carmona, fotógrafa en Barcelona y Granollers"
-            >
-              <BsInstagram className="w-10 h-10 sm:w-12 sm:h-12" />
-            </a>
-
-            <a
-              href="/landing/contact"
-              aria-label="Ir a la página de contacto de Aroa Carmona"
-            >
-              <MdEmail className="w-10 h-10 sm:w-12 sm:h-12" />
+          <div className="flex items-center gap-1">
+            <span>Desarrollado por</span>
+            <a href="#" className="hover:text-orange-400 transition-colors">
+              Daniel Castro Martín
             </a>
           </div>
-        </section>
-
-        {/* Línea legal / SEO local */}
-        <div className="w-full col-span-full border-t border-base-100 pt-2 text-s opacity-80">
-          <p className="font-body">
-            © {currentYear} Fotografías por Aroa Carmona 
-            <br/><span className="font-semibold">Desarrollado por Daniel Castro Martín</span>
-          </p>
-
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import en from "@/languages/en";
 import es from "@/languages/es";
 import fr from "@/languages/fr";
 import { Layout } from "@/components/Layout";
 import Head from "next/head";
+import { MdEmail, MdLocationOn, MdCameraAlt } from "react-icons/md";
+import { BsInstagram } from "react-icons/bs";
 
 const Contact = () => {
   const router = useRouter();
@@ -24,6 +26,14 @@ const Contact = () => {
   const [status, setStatus] = useState(null); // "success" | "error" | null
   const [loading, setLoading] = useState(false);
 
+  // Animation effect on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      document.getElementById("contact-container")?.classList.remove("opacity-0", "translate-y-10");
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -35,9 +45,9 @@ const Contact = () => {
     setStatus(null);
 
     try {
-      // TODO: conectar con tu API (/api/landing/contact)
-      // await fetch("/api/landing/contact", { method: "POST", body: JSON.stringify(form) });
-
+      // Mock API call simulation
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
       console.log("Form enviado:", form);
       setStatus("success");
       setForm({ name: "", email: "", subject: "", message: "" });
@@ -49,10 +59,8 @@ const Contact = () => {
     }
   };
 
-  const seoTitle =
-    "Contacto | Fotógrafa profesional en Barcelona y Granollers | Aroa Carmona";
-  const seoDescription =
-    "Contacta con Aroa Carmona, fotógrafa profesional en Barcelona y Granollers. Solicita información para sesiones de fotos, eventos, retratos, fotografía animal y reportajes en la zona de Barcelona y Vallès Oriental.";
+  const seoTitle = "Contacto | Fotógrafa profesional en Barcelona y Granollers | Aroa Carmona";
+  const seoDescription = "Contacta con Aroa Carmona, fotógrafa profesional en Barcelona y Granollers. Solicita información para sesiones de fotos, eventos, retratos, fotografía animal y reportajes en la zona de Barcelona y Vallès Oriental.";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -89,185 +97,155 @@ const Contact = () => {
       <Head>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <meta
-          name="keywords"
-          content="contacto fotógrafa Barcelona, contacto fotógrafa Granollers, contactar con Aroa Carmona, sesiones de fotos Barcelona, presupuestos fotografía Granollers, fotógrafa Vallès Oriental contacto"
-        />
-
+        <meta name="keywords" content="contacto fotógrafa Barcelona, contacto fotógrafa Granollers, contactar con Aroa Carmona, sesiones de fotos Barcelona, presupuestos fotografía Granollers, fotógrafa Vallès Oriental contacto" />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://byphnix.com/landing/contact"
-        />
+        <meta property="og:url" content="https://byphnix.com/landing/contact" />
         <meta property="og:locale" content="es_ES" />
         <link rel="canonical" href="https://byphnix.com/landing/contact" />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
-      <div className="min-h-screen flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-2xl">
-          {/* Título SEO claro */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-center mb-2 text-white">
-            {t?.contactTitle ??
-              "Contactar con Aroa Carmona · Fotógrafa en Barcelona y Granollers"}
-          </h1>
+      <div className="min-h-screen bg-neutral-900 pt-24 pb-12 px-4 md:px-8 selection:bg-orange-500 selection:text-white">
+        
+        <div 
+            id="contact-container" 
+            className="max-w-6xl mx-auto opacity-0 translate-y-10 transition-all duration-1000 ease-out"
+        >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                
+                {/* Left Column: Information */}
+                <div className="space-y-8 flex flex-col justify-center">
+                    <div>
+                        <span className="text-orange-500 font-bold tracking-widest text-xs md:text-sm uppercase mb-2 block">
+                            Estamos en contacto
+                        </span>
+                        <h1 className="font-title text-4xl md:text-6xl text-white leading-tight mb-6">
+                            ¿Hablamos de tu <br/> Próxima Sesión?
+                        </h1>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed max-w-md">
+                            Estoy aquí para resolver tus dudas y planificar juntos una sesión que capture exactamente lo que buscas.
+                            Ya sea en Granollers, Barcelona o cualquier rincón especial.
+                        </p>
+                    </div>
 
-          <p className="text-center opacity-80 mb-8 text-white" >
-            {t?.contactSubtitle ??
-              "Cuéntame qué tipo de sesión de fotos necesitas en Barcelona, Granollers o alrededores (eventos, retratos, fotografía animal, familia...) y te responderé lo antes posible."}
-          </p>
+                    <div className="space-y-6 pt-4">
+                        <div className="flex items-start gap-4">
+                            <div className="p-3 bg-neutral-800 rounded-lg text-orange-500">
+                                <MdEmail size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-white font-semibold">Email</h3>
+                                <a href="mailto:acarmona@byphnix.com" className="text-gray-400 hover:text-white transition-colors">
+                                    acarmona@byphnix.com
+                                </a>
+                            </div>
+                        </div>
 
-          {/* Card del formulario */}
-          <div className="card bg-base-200 shadow-xl">
-            <div className="card-body">
-              <form className="space-y-4" onSubmit={handleSubmit}>
-                {/* Nombre */}
-                <div>
-                  <label className="label" htmlFor="name">
-                    <span className="label-text">
-                      {t?.contactNameLabel ?? "Nombre completo"}
-                    </span>
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    className="input input-bordered w-full"
-                    placeholder={
-                      t?.contactNamePlaceholder ??
-                      "Tu nombre o el de la persona de contacto"
-                    }
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    autoComplete="name"
-                  />
+                        <div className="flex items-start gap-4">
+                            <div className="p-3 bg-neutral-800 rounded-lg text-orange-500">
+                                <MdLocationOn size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-white font-semibold">Ubicación</h3>
+                                <p className="text-gray-400">
+                                    Granollers · Barcelona · Vallès Oriental
+                                </p>
+                            </div>
+                        </div>
+
+                         <div className="flex items-start gap-4">
+                            <div className="p-3 bg-neutral-800 rounded-lg text-orange-500">
+                                <BsInstagram size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-white font-semibold">Instagram</h3>
+                                <a href="https://instagram.com/byphnix" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                    @byphnix
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label className="label" htmlFor="email">
-                    <span className="label-text">
-                      {t?.contactEmailLabel ?? "Correo electrónico"}
-                    </span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    className="input input-bordered w-full"
-                    placeholder={
-                      t?.contactEmailPlaceholder ?? "tuemail@ejemplo.com"
-                    }
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    autoComplete="email"
-                  />
+                {/* Right Column: Form */}
+                <div className="bg-neutral-800/40 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-sm">
+                    <h2 className="text-2xl font-title text-white mb-6">Envíame un mensaje</h2>
+                    <form className="space-y-5" onSubmit={handleSubmit}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div className="form-control">
+                                <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Nombre</label>
+                                <input
+                                    name="name"
+                                    type="text"
+                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                    placeholder="Tu nombre"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-control">
+                                <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Email</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                    placeholder="tucorreo@ejemplo.com"
+                                    value={form.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Asunto</label>
+                            <input
+                                name="subject"
+                                type="text"
+                                className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                placeholder="Sesión de fotos..."
+                                value={form.subject}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Mensaje</label>
+                            <textarea
+                                name="message"
+                                className="textarea bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg min-h-[150px] text-base"
+                                placeholder="Cuéntame sobre tu idea, fechas, lugar..."
+                                value={form.message}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        {status === "success" && (
+                            <div className="alert alert-success bg-green-900/50 border-green-800 text-green-200 text-sm py-2 rounded-lg">
+                                <span>¡Mensaje enviado correctamente!</span>
+                            </div>
+                        )}
+                        {status === "error" && (
+                            <div className="alert alert-error bg-red-900/50 border-red-800 text-red-200 text-sm py-2 rounded-lg">
+                                <span>Hubo un error. Por favor inténtalo de nuevo.</span>
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-full bg-orange-600 hover:bg-orange-700 border-none text-white normal-case text-lg font-normal rounded-xl mt-4"
+                            disabled={loading}
+                        >
+                            {loading ? "Enviando..." : "Enviar Mensaje"}
+                        </button>
+                    </form>
                 </div>
 
-                {/* Asunto */}
-                <div>
-                  <label className="label" htmlFor="subject">
-                    <span className="label-text">
-                      {t?.contactSubjectLabel ??
-                        "Tipo de sesión o motivo de contacto"}
-                    </span>
-                  </label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    className="input input-bordered w-full"
-                    placeholder={
-                      t?.contactSubjectPlaceholder ??
-                      "Ej: Sesión de pareja en Granollers, evento en Barcelona..."
-                    }
-                    value={form.subject}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                {/* Mensaje */}
-                <div>
-                  <label className="label" htmlFor="message">
-                    <span className="label-text">
-                      {t?.contactMessageLabel ?? "Mensaje"}
-                    </span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    className="textarea textarea-bordered w-full min-h-32"
-                    placeholder={
-                      t?.contactMessagePlaceholder ??
-                      "Cuéntame la fecha aproximada, el lugar (Barcelona, Granollers, etc.) y el tipo de sesión que te interesa."
-                    }
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                {/* Estado / feedback */}
-                {status === "success" && (
-                  <div className="alert alert-success py-2">
-                    <span>
-                      {t?.contactSuccess ??
-                        "¡Mensaje enviado! Te responderé lo antes posible para ayudarte con tu sesión de fotos."}
-                    </span>
-                  </div>
-                )}
-                {status === "error" && (
-                  <div className="alert alert-error py-2">
-                    <span>
-                      {t?.contactError ??
-                        "Ha ocurrido un error al enviar el mensaje. Inténtalo de nuevo en unos minutos."}
-                    </span>
-                  </div>
-                )}
-
-                {/* Botón */}
-                <div className="card-actions justify-end">
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    disabled={loading}
-                    aria-label="Enviar mensaje de contacto a Aroa Carmona"
-                  >
-                    {loading
-                      ? t?.contactSending ?? "Enviando..."
-                      : t?.contactSubmit ?? "Enviar mensaje"}
-                  </button>
-                </div>
-              </form>
-
-              {/* Info de contacto directa SEO-friendly */}
-              <div className="mt-4 text-sm opacity-70">
-                <p>
-                  {t?.contactDirect ??
-                    "Si lo prefieres, también puedes contactar directamente con Aroa Carmona:"}{" "}
-                  <span className="font-medium">
-                    <a
-                      href="mailto:acarmona@byphnix.com"
-                      className="underline hover:no-underline"
-                    >
-                      acarmona@byphnix.com
-                    </a>
-                  </span>
-                </p>
-                <p className="mt-1">
-                  Barcelona · Granollers · Vallès Oriental · Catalunya
-                </p>
-              </div>
             </div>
-          </div>
         </div>
       </div>
     </Layout>
