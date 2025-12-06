@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BsInstagram, BsArrowDown } from "react-icons/bs";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -7,9 +7,24 @@ import Head from "next/head";
 import en from "@/languages/en";
 import es from "@/languages/es";
 import fr from "@/languages/fr";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// Move gallery images to a constant to use it for both Grid and Lightbox
+const galleryImages = [
+    "CARROUSEL2.webp",
+    "CARROUSEL4.webp",
+    "Tibidabo.jpg", 
+    "CARROUSEL3.webp",
+    "logo.webp",
+    "CARROUSEL5.webp",
+];
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
   let t = en;
   if (router.locale === "es") t = es;
   if (router.locale === "fr") t = fr;
@@ -47,6 +62,11 @@ export const Landing = ({ theme }) => {
       logoObserver.disconnect();
     };
   }, []);
+
+  const handleOpenLightbox = (i) => {
+      setIndex(i);
+      setOpen(true);
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -236,20 +256,17 @@ export const Landing = ({ theme }) => {
 
                 {/* Masonry Layout simulation using CSS Columns */}
                 <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                     {[
-                        "CARROUSEL2.webp",
-                        "CARROUSEL4.webp",
-                        "Tibidabo.jpg", // Different aspect ratio helps masonry look
-                        "CARROUSEL3.webp",
-                        "logo.webp",
-                        "CARROUSEL5.webp",
-                     ].map((img, i) => (
-                        <div key={i} className="break-inside-avoid relative group rounded-2xl overflow-hidden reveal-on-scroll">
+                     {galleryImages.map((img, i) => (
+                        <div 
+                            key={i} 
+                            onClick={() => handleOpenLightbox(i)}
+                            className="break-inside-avoid relative group rounded-2xl overflow-hidden reveal-on-scroll cursor-pointer"
+                        >
                              <Image
                                 src={`/assets/${img}`}
                                 alt="Portfolio item"
                                 width={500}
-                                height={700} // Aspact ratio placeholder, style handles visual
+                                height={700}
                                 className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -265,6 +282,14 @@ export const Landing = ({ theme }) => {
                 </div>
              </div>
         </section>
+
+        {/* ---------- LIGHTBOX COMPONENT ---------- */}
+        <Lightbox
+            open={open}
+            close={() => setOpen(false)}
+            index={index}
+            slides={galleryImages.map(img => ({ src: `/assets/${img}` }))}
+        />
 
         {/* ---------- CONTACT BANNER ---------- */}
         <section className="py-12 bg-neutral-900 text-center px-4">
