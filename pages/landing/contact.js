@@ -46,9 +46,9 @@ const Contact = () => {
     setLoading(true);
     setStatus(null);
 
-    const YOUR_SERVICE_ID = "service_rhb20ms"; 
-    const YOUR_TEMPLATE_ID = "template_u5vulff";
-    const YOUR_PUBLIC_KEY = "hWoQ-IVSv8qoU_Bn4";
+    const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID; 
+    const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const YOUR_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, formRef.current, YOUR_PUBLIC_KEY)
       .then((result) => {

@@ -18,8 +18,8 @@ export const Navbar = ({ theme }) => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Galería", href: "#gallery" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Galería", href: "/#gallery" },
     { name: "Contacto", href: "/landing/contact" },
   ];
 

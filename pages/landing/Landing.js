@@ -198,7 +198,7 @@ export const Landing = ({ theme }) => {
           </div>
 
           {/* Scrolldown indicator */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+          <div className="absolute bottom-10 transform -translate-x-1/2 animate-bounce opacity-50">
              <BsArrowDown className="text-3xl text-white"/>
           </div>
         </section>
