@@ -48,7 +48,7 @@ const Contact = () => {
 
     const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID; 
     const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const YOUR_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const YOUR_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC;
 
     emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, formRef.current, YOUR_PUBLIC_KEY)
       .then((result) => {
@@ -244,6 +244,14 @@ const Contact = () => {
                             {loading ? "Enviando..." : "Enviar Mensaje"}
                         </button>
                     </form>
+                    
+                    <p className="mt-8 text-center text-gray-400 text-sm">
+                        O si lo prefieres, puedes contactar conmigo escribiendo directamente a {" "}
+                        <a href="mailto:acarmona@byphnix.com" className="text-orange-500 hover:text-white transition-colors">
+                            acarmona@byphnix.com
+                        </a>
+                        .
+                    </p>
                 </div>
 
             </div>

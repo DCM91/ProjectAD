@@ -63,6 +63,40 @@ export const Landing = ({ theme }) => {
     };
   }, []);
 
+  // Fix for anchor navigation from other pages
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100); // Small delay to ensure rendering
+        }
+      }
+    };
+
+    // Run on mount
+    handleHashScroll();
+
+    // Listen for hash changes (optional if needed for same-page hash updates not handled by Link)
+    const handleRouteChange = (url) => {
+        if (url.includes('#')) {
+             // Extract hash part and try to scroll
+             const hash = url.split('#')[1];
+             const element = document.getElementById(hash);
+             if(element) setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+        }
+    }
+
+    router.events.on('hashChangeComplete', handleHashScroll);
+    return () => {
+        router.events.off('hashChangeComplete', handleHashScroll);
+    }
+  }, [router.events]);
+
   const handleOpenLightbox = (i) => {
       setIndex(i);
       setOpen(true);
