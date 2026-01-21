@@ -12,12 +12,15 @@ import "yet-another-react-lightbox/styles.css";
 
 // Move gallery images to a constant to use it for both Grid and Lightbox
 const galleryImages = [
-    "CARROUSEL2.JPG",
-    "CARROUSEL4.JPG",
-    "Tibidabo.jpg", 
-    "CARROUSEL3.JPG",
-    "logo.webp",
-    "CARROUSEL5.JPG",
+    "últimos trabajos(1).JPG",
+    "últimos trabajos(2).JPG",
+    "últimos trabajos(3).JPG",
+    "últimos trabajos(4).JPG",
+    "últimos trabajos(5).JPG",
+    "últimos trabajos(6).JPG",
+    "últimos trabajos.JPG",
+    "últimos trabajos_danza(1).JPG",
+    "últimos trabajos_danza.JPG",
 ];
 
 export const Landing = ({ theme }) => {
@@ -297,7 +300,7 @@ export const Landing = ({ theme }) => {
                             className="break-inside-avoid relative group rounded-2xl overflow-hidden reveal-on-scroll cursor-pointer"
                         >
                              <Image
-                                src={`/assets/${img}`}
+                                src={`/assets/lastWorks/${img}`}
                                 alt="Portfolio item"
                                 width={500}
                                 height={700}
@@ -322,7 +325,7 @@ export const Landing = ({ theme }) => {
             open={open}
             close={() => setOpen(false)}
             index={index}
-            slides={galleryImages.map(img => ({ src: `/assets/${img}` }))}
+            slides={galleryImages.map(img => ({ src: `/assets/lastWorks/${img}` }))}
         />
 
         {/* ---------- CONTACT BANNER ---------- */}
