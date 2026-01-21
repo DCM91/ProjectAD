@@ -106,7 +106,7 @@ export const Landing = ({ theme }) => {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Aroa Carmona Fotografía - By Phnix",
-    image: "https://byphnix.vercel.app/assets/CARROUSEL1.webp",
+    image: "https://byphnix.vercel.app/assets/CARROUSEL1.JPG",
     url: "https://byphnix.vercel.app",
     telephone: "+34 677 00 00 00",
     description: "Servicios de fotografía profesional en Barcelona y Granollers por Aroa Carmona. Bodas, eventos, mascotas y sesiones de retrato.",
@@ -142,14 +142,14 @@ export const Landing = ({ theme }) => {
         <meta property="og:url" content="https://byphnix.vercel.app/" />
         <meta property="og:title" content="Aroa Carmona | Fotografía Profesional en Barcelona y Granollers" />
         <meta property="og:description" content="Descubre el portfolio de Aroa Carmona. Fotografía emocional y creativa en Barcelona y Granollers. Creado por Daniel Castro." />
-        <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.webp" />
+        <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://byphnix.vercel.app/" />
         <meta property="twitter:title" content="Aroa Carmona | Fotografía Barcelona" />
         <meta property="twitter:description" content="Fotografía profesional en Barcelona y Granollers. Aroa Carmona captura tu esencia." />
-        <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.webp" />
+        <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG" />
 
         <script
           type="application/ld+json"
@@ -191,7 +191,7 @@ export const Landing = ({ theme }) => {
           {/* Background Image with Parallax-like feel (static for perf, can be fixed) */}
           <div className="absolute inset-0 z-0">
              <Image
-                src="/assets/CARROUSEL1.webp" // Using one of your best shots as hero bg
+                src="/assets/CARROUSEL1.JPG" // Using one of your best shots as hero bg
                 alt="Background texture"
                 fill
                 className="object-cover opacity-40 grayscale-[20%]"
