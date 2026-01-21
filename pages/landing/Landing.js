@@ -251,10 +251,10 @@ export const Landing = ({ theme }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[ 
-                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/eventos.jpg" },
+                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/eventos.JPG" },
                         { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL3.JPG" },
                         { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL5.JPG" },
-                        { title: "Danza", desc: "Familias y amigos unidos por un instante.", img: "/assets/Danza.jpg"}
+                        { title: "Danza", desc: "Familias y amigos unidos por un instante.", img: "/assets/Danza.JPG"}
                     ].map((service, idx) => (
                         <div key={idx} className="rounded-2xl group relative h-96 w-full overflow-hidden cursor-pointer reveal-on-scroll delay-100">
                              <Image
