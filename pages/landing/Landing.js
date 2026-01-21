@@ -12,12 +12,12 @@ import "yet-another-react-lightbox/styles.css";
 
 // Move gallery images to a constant to use it for both Grid and Lightbox
 const galleryImages = [
-    "CARROUSEL2.webp",
-    "CARROUSEL4.webp",
+    "CARROUSEL2.JPG",
+    "CARROUSEL4.JPG",
     "Tibidabo.jpg", 
-    "CARROUSEL3.webp",
+    "CARROUSEL3.JPG",
     "logo.webp",
-    "CARROUSEL5.webp",
+    "CARROUSEL5.JPG",
 ];
 
 export const Landing = ({ theme }) => {
@@ -206,12 +206,12 @@ export const Landing = ({ theme }) => {
                     Portfolio & Gallery
                 </span>
                 <h1 className="font-title text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
-                    Capturando<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-500">Esencia</span>
+                    Aroa<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-500">Carmona</span>
                 </h1>
             </div>
             
             <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                Soy <strong>Aroa Carmona</strong>. Transformo momentos efímeros en recuerdos eternos. 
+                Soy <strong>Aroa Carmona</strong>. Transformo momentos efímeros en recuerdos eternos.<br></br> 
                 Fotógrafa profesional en Barcelona y Granollers.
             </p>
 
@@ -248,10 +248,10 @@ export const Landing = ({ theme }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[ 
-                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/Tibidabo.jpg" },
-                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL5.webp" },
-                        { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL4.webp" },
-                        { title: "Grupos", desc: "Familias y amigos unidos por un instante.", img: "/assets/CARROUSEL3.webp" }
+                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/eventos.jpg" },
+                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL3.JPG" },
+                        { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL5.JPG" },
+                        { title: "Danza", desc: "Familias y amigos unidos por un instante.", img: "/assets/Danza.jpg"}
                     ].map((service, idx) => (
                         <div key={idx} className="rounded-2xl group relative h-96 w-full overflow-hidden cursor-pointer reveal-on-scroll delay-100">
                              <Image
