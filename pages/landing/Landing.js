@@ -214,8 +214,8 @@ export const Landing = ({ theme }) => {
             </div>
             
             <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                Transformo momentos efímeros en recuerdos eternos.<br></br> 
-                Fotógrafa profesional en Barcelona y Granollers.
+                Capturo instantes que no se repiten, emociones que se sienten y miradas que cuentan historias. Transformo momentos reales en recuerdos eternos.<br></br> 
+                Fotografía profesional en Barcelona y al rededores.
             </p>
 
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
@@ -229,7 +229,7 @@ export const Landing = ({ theme }) => {
                 href="#gallery" 
                 className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-white transition-all duration-300 rounded-lg"
               >
-                VER GALERÍA
+                VER TRABAJOS
               </Link>
             </div>
           </div>
