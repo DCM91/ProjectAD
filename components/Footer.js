@@ -16,7 +16,7 @@ export const Footer = ({ theme }) => {
           {/* Column 1: Brand & Desc */}
           <div className="space-y-4">
             <h2 className="font-title text-3xl text-white tracking-wide">
-              BY PHNIX
+              Aroa Carmona
             </h2>
             <p className="text-gray-400 font-light text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
               Capturando momentos efímeros para convertirlos en recuerdos eternos. 

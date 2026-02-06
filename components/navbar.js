@@ -37,7 +37,7 @@ export const Navbar = ({ theme }) => {
           {/* Logo */}
           <Link href="/" className="relative z-50">
            <span className="font-title text-3xl font-bold text-white tracking-wide">
-             BYPHNIX
+             Aroa Carmona
            </span>
           </Link>
 
