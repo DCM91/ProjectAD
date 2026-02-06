@@ -12,15 +12,19 @@ import "yet-another-react-lightbox/styles.css";
 
 // Move gallery images to a constant to use it for both Grid and Lightbox
 const galleryImages = [
-    "últimos trabajos(1).JPG",
-    "últimos trabajos(2).JPG",
-    "últimos trabajos(3).JPG",
-    "últimos trabajos(4).JPG",
-    "últimos trabajos(5).JPG",
-    "últimos trabajos(6).JPG",
-    "últimos trabajos.JPG",
-    "últimos trabajos_danza(1).JPG",
-    "últimos trabajos_danza.JPG",
+    "ultimos trabajos (1).JPG",
+    "ultimos trabajos (2).JPG",
+    "ultimos trabajos (3).JPG",
+    "ultimos trabajos (4).JPG",
+    "ultimos trabajos (5).JPG",
+    "ultimos trabajos (6).JPG",
+    "ultimos trabajos (7).JPG",
+    "ultimos trabajos (8).JPG",
+    "ultimos trabajos (9).JPG",
+    "ultimos trabajos (10).JPG",
+    "ultimos trabajos (11).JPG",
+    "ultimos trabajos (12).JPG",
+    "ultimos trabajos (13).JPG",
 ];
 
 export const Landing = ({ theme }) => {
@@ -109,7 +113,7 @@ export const Landing = ({ theme }) => {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Aroa Carmona Fotografía - By Phnix",
-    image: "https://byphnix.vercel.app/assets/CARROUSEL1.JPG",
+    image: "https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026",
     url: "https://byphnix.vercel.app",
     telephone: "+34 677 00 00 00",
     description: "Servicios de fotografía profesional en Barcelona y Granollers por Aroa Carmona. Bodas, eventos, mascotas y sesiones de retrato.",
@@ -145,14 +149,14 @@ export const Landing = ({ theme }) => {
         <meta property="og:url" content="https://byphnix.vercel.app/" />
         <meta property="og:title" content="Aroa Carmona | Fotografía Profesional en Barcelona y Granollers" />
         <meta property="og:description" content="Descubre el portfolio de Aroa Carmona. Fotografía emocional y creativa en Barcelona y Granollers. Creado por Daniel Castro." />
-        <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG" />
+        <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://byphnix.vercel.app/" />
         <meta property="twitter:title" content="Aroa Carmona | Fotografía Barcelona" />
         <meta property="twitter:description" content="Fotografía profesional en Barcelona y Granollers. Aroa Carmona captura tu esencia." />
-        <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG" />
+        <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026" />
 
         <script
           type="application/ld+json"
@@ -194,7 +198,7 @@ export const Landing = ({ theme }) => {
           {/* Background Image with Parallax-like feel (static for perf, can be fixed) */}
           <div className="absolute inset-0 z-0">
              <Image
-                src="/assets/CARROUSEL1.JPG" // Using one of your best shots as hero bg
+                src="/assets/CARROUSEL1.JPG?v=06022026" // Using one of your best shots as hero bg
                 alt="Background texture"
                 fill
                 className="object-cover opacity-40 grayscale-[20%]"
@@ -252,7 +256,7 @@ export const Landing = ({ theme }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[ 
                         { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/eventos.JPG" },
-                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL3.JPG" },
+                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL3.JPG?v=06022026" },
                         { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL5.JPG" },
                         { title: "Danza", desc: "Familias y amigos unidos por un instante.", img: "/assets/Danza.JPG"}
                     ].map((service, idx) => (
