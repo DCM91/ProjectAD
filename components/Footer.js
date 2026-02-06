@@ -65,7 +65,7 @@ export const Footer = ({ theme }) => {
              <p className="text-xs text-gray-500 mt-4">
                byphnix.photo@gmail.com
              </p>
-            <p className="text-xs text-gray-500 mt-4">
+            <p className="text-xs text-gray-500 mt-2">
                +34 677 36 90 40 
              </p>
           </div>
