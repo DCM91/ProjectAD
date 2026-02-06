@@ -214,7 +214,7 @@ export const Landing = ({ theme }) => {
             </div>
             
             <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                Soy <strong>Aroa Carmona</strong>. Transformo momentos efímeros en recuerdos eternos.<br></br> 
+                Transformo momentos efímeros en recuerdos eternos.<br></br> 
                 Fotógrafa profesional en Barcelona y Granollers.
             </p>
 
