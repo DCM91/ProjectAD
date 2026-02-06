@@ -346,7 +346,7 @@ export const Landing = ({ theme }) => {
         <section className="pb-20 pt-10">
              <div className="relative w-80 h-60 mx-auto">
               <Image
-                src="/assets/logo_white.png"
+                src="/assets/logo_white.png?v=06022026"
                 alt="By Phnix - Fotografía profesional en Barcelona y Granollers, logo de Aroa Carmona"
                 fill
                 className="object-contain"
