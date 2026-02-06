@@ -63,7 +63,7 @@ export const Footer = ({ theme }) => {
                 </Link>
              </div>
              <p className="text-xs text-gray-500 mt-4">
-               acarmona@byphnix.com
+               byphnix.photo@gmail.com
              </p>
           </div>
         </div>
