@@ -214,7 +214,7 @@ export const Landing = ({ theme }) => {
             </div>
             
             <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                Capturo instantes que no se repiten, emociones que se sienten y miradas que cuentan historias. Transformo momentos reales en recuerdos eternos.<br></br> 
+                Capturo instantes que no se repiten, emociones que se sienten y miradas que cuentan historias.<br></br> Transformo momentos reales en recuerdos eternos.<br></br> 
                 Fotografía profesional en Barcelona y al rededores.
             </p>
 
