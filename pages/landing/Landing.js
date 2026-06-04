@@ -118,7 +118,7 @@ const GalleryCategory = ({ category, items, onItemClick }) => {
 
     return (
         <div id={category.id} className="mb-16 last:mb-0">
-            <div className="flex items-center justify-between mb-5 reveal-on-scroll">
+            <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
                     <div className="h-0.5 w-10 bg-orange-500" />
                     <h2 className="font-title text-3xl text-white tracking-wide">{category.title}</h2>
@@ -432,7 +432,7 @@ export const Landing = ({ theme }) => {
         `}</style>
       </Head>
 
-      <div data-theme={theme} className="min-h-screen w-full bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white">
+      <div data-theme={theme} className="min-h-screen w-full min-w-0 bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white overflow-x-hidden">
         
         {/* ---------- HERO SECTION ---------- */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

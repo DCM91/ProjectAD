@@ -39,7 +39,7 @@ export const Layout = ({ title = "Byphnix" , children}) => {
           </div>
         </header>
 
-        <main className='w-full '>{children}</main>
+        <main className='w-full min-w-0 overflow-hidden'>{children}</main>
 
         <footer className=''><Footer theme={theme} /></footer>
     </div>
