@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { BsArrowDown, BsPlayFill } from "react-icons/bs";
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import { BsArrowDown, BsPlayFill, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -80,55 +80,121 @@ const DriveImage = ({ fileId, alt, className }) => {
 const videoPreviewUrl = (id) => `https://drive.google.com/file/d/${id}/preview`;
 
 const SkeletonGrid = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[...Array(6)].map((_, i) => (
-            <div key={i} className="aspect-square rounded-2xl bg-neutral-800 animate-pulse" />
+    <div className="flex gap-4 overflow-hidden">
+        {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex-shrink-0 w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-neutral-800 animate-pulse" />
         ))}
     </div>
 );
 
-const GalleryCategory = ({ category, items, onItemClick }) => (
-    <div id={category.id} className="mb-20 last:mb-0">
-        <div className="flex items-center gap-3 mb-6">
-            <div className="h-0.5 w-10 bg-orange-500" />
-            <h2 className="font-title text-3xl text-white tracking-wide">{category.title}</h2>
-            <span className="text-gray-600 text-xs font-mono ml-2 hidden sm:inline">
-                {items.length} {items.length === 1 ? "archivo" : "archivos"}
-            </span>
-        </div>
+const GalleryCategory = ({ category, items, onItemClick }) => {
+    const scrollRef = useRef(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(false);
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {items.map((item, i) => (
-                <div
-                    key={item.id}
-                    onClick={() => onItemClick(i)}
-                    className="aspect-square relative group rounded-2xl overflow-hidden cursor-pointer bg-neutral-800 border border-white/[0.04] hover:border-orange-500/30 transition-colors duration-500"
-                >
-                    {item.type === "image" ? (
-                        <DriveImage
-                            fileId={item.id}
-                            alt={item.name}
-                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                        />
-                    ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-800">
-                            <div className="w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center group-hover:border-orange-400/50 group-hover:bg-black/60 transition-all duration-300">
-                                <BsPlayFill className="text-2xl text-white ml-0.5" />
-                            </div>
-                            <span className="text-gray-500 text-xs mt-3 font-mono uppercase tracking-wider">Video</span>
-                        </div>
-                    )}
+    const checkScroll = useCallback(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        setCanScrollLeft(el.scrollLeft > 12);
+        setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 12);
+    }, []);
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                        <span className="text-white font-title text-xs tracking-[0.25em] uppercase border border-white/40 rounded-full px-4 py-1.5 backdrop-blur-sm">
-                            {item.type === "video" ? "Reproducir" : "Ampliar"}
-                        </span>
-                    </div>
+    useEffect(() => {
+        checkScroll();
+        const el = scrollRef.current;
+        if (!el) return;
+        el.addEventListener("scroll", checkScroll, { passive: true });
+        const ro = new ResizeObserver(checkScroll);
+        ro.observe(el);
+        return () => {
+            el.removeEventListener("scroll", checkScroll);
+            ro.disconnect();
+        };
+    }, [checkScroll, items]);
+
+    const scroll = (dir) => {
+        scrollRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+    };
+
+    return (
+        <div id={category.id} className="mb-16 last:mb-0">
+            <div className="flex items-center justify-between mb-5 reveal-on-scroll">
+                <div className="flex items-center gap-3">
+                    <div className="h-0.5 w-10 bg-orange-500" />
+                    <h2 className="font-title text-3xl text-white tracking-wide">{category.title}</h2>
+                    <span className="text-gray-600 text-xs font-mono ml-2 hidden sm:inline">
+                        {items.length} {items.length === 1 ? "archivo" : "archivos"}
+                    </span>
                 </div>
-            ))}
+
+                <div className="hidden sm:flex items-center gap-1">
+                    <button
+                        onClick={() => scroll(-1)}
+                        disabled={!canScrollLeft}
+                        className="p-2 rounded-full text-gray-500 hover:text-white hover:bg-white/5 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
+                        aria-label="Desplazar izquierda"
+                    >
+                        <BsChevronLeft size={20} />
+                    </button>
+                    <button
+                        onClick={() => scroll(1)}
+                        disabled={!canScrollRight}
+                        className="p-2 rounded-full text-gray-500 hover:text-white hover:bg-white/5 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
+                        aria-label="Desplazar derecha"
+                    >
+                        <BsChevronRight size={20} />
+                    </button>
+                </div>
+            </div>
+
+            <div className="relative overflow-hidden">
+                <div
+                    ref={scrollRef}
+                    className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory gallery-slider"
+                    style={{ scrollBehavior: "smooth" }}
+                >
+                    {items.map((item, i) => (
+                        <div
+                            key={item.id}
+                            onClick={() => onItemClick(i)}
+                            className="flex-shrink-0 w-72 h-72 md:w-80 md:h-80 snap-start relative group rounded-2xl overflow-hidden cursor-pointer bg-neutral-800 border border-white/[0.04] hover:border-orange-500/30 transition-colors duration-500"
+                        >
+                            {item.type === "image" ? (
+                                <DriveImage
+                                    fileId={item.id}
+                                    alt={item.name}
+                                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                />
+                            ) : (
+                                <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-800">
+                                    <div className="w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center group-hover:border-orange-400/50 group-hover:bg-black/60 transition-all duration-300">
+                                        <BsPlayFill className="text-2xl text-white ml-0.5" />
+                                    </div>
+                                    <span className="text-gray-500 text-xs mt-3 font-mono uppercase tracking-wider">Video</span>
+                                </div>
+                            )}
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                                <span className="text-white font-title text-xs tracking-[0.25em] uppercase border border-white/40 rounded-full px-4 py-1.5 backdrop-blur-sm">
+                                    {item.type === "video" ? "Reproducir" : "Ampliar"}
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+
+                    <div className="flex-shrink-0 w-0.5 snap-end" />
+                </div>
+
+                {canScrollRight && (
+                    <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-neutral-900 to-transparent pointer-events-none hidden sm:block" />
+                )}
+                {canScrollLeft && (
+                    <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-neutral-900 to-transparent pointer-events-none hidden sm:block" />
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
@@ -346,6 +412,23 @@ export const Landing = ({ theme }) => {
             opacity: 1 !important;
             transform: translateY(0) !important;
           }
+          .gallery-slider::-webkit-scrollbar {
+            height: 3px;
+          }
+          .gallery-slider::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          .gallery-slider::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+          }
+          .gallery-slider::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+          }
+          .gallery-slider {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+          }
         `}</style>
       </Head>
 
@@ -375,10 +458,7 @@ export const Landing = ({ theme }) => {
                 </h1>
             </div>
             
-            <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                Capturo instantes que no se repiten, emociones que se sienten y miradas que cuentan historias.<br></br> Transformo momentos reales en recuerdos eternos.<br></br> 
-                Fotografía profesional en Barcelona y al rededores.
-            </p>
+            <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up invisible" style={{ animationDelay: '0.3s' }} aria-hidden="true" />
 
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <Link 
@@ -391,7 +471,7 @@ export const Landing = ({ theme }) => {
                 href="#retratos" 
                 className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-white transition-all duration-300 rounded-lg"
               >
-                VER TRABAJOS
+                MIS SERVICIOS
               </Link>
             </div>
           </div>
@@ -402,50 +482,13 @@ export const Landing = ({ theme }) => {
           </div>
         </section>
 
-        {/* ---------- SERVICES (Minimalist) ---------- */}
-        <section id="servicios" className="py-24 px-4 bg-neutral-900 relative">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16 reveal-on-scroll">
-                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Mis Servicios</h2>
-                    <div className="h-1 w-20 bg-orange-500 mx-auto"></div>
-                    <p className="mt-4 text-gray-400 font-light">Especialización y pasión en cada disparo</p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {[ 
-                        { title: "Eventos", desc: "Bodas, fiestas y momentos únicos irrepetibles.", img: "/assets/eventos.JPG" },
-                        { title: "Retratos", desc: "Sesiones individuales para capturar tu mejor versión.", img: "/assets/CARROUSEL3.JPG?v=06022026" },
-                        { title: "Mascotas", desc: "La pureza de tus compañeros más fieles.", img: "/assets/CARROUSEL5.JPG" },
-                        { title: "Danza", desc: "Familias y amigos unidos por un instante.", img: "/assets/Danza.JPG"}
-                    ].map((service, idx) => (
-                        <div key={idx} className="rounded-2xl group relative h-96 w-full overflow-hidden cursor-pointer reveal-on-scroll delay-100">
-                             <Image
-                                src={service.img}
-                                alt={service.title}
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity duration-300" />
-                            <div className="absolute bottom-0 left-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <h3 className="font-title text-2xl text-white mb-2">{service.title}</h3>
-                                <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    {service.desc}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
         {/* ---------- DYNAMIC GALLERY ---------- */}
         <section id="gallery" className="py-20 bg-neutral-900">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16 reveal-on-scroll">
-                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Galería</h2>
+                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Mis Servicios</h2>
                     <div className="h-1 w-20 bg-orange-500 mx-auto" />
-                    <p className="mt-4 text-gray-400 font-light">Explora mi trabajo por categorías</p>
+                    <p className="mt-4 text-gray-400 font-light">Especialización y pasión en cada disparo</p>
                 </div>
 
                 {GALLERY_CATEGORIES.map((category) => {

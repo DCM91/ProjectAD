@@ -34,7 +34,7 @@ export const Footer = ({ theme }) => {
               Servicios
             </Link>
             <Link href="/#retratos" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
-              Galería
+              Mis Servicios
             </Link>
             <Link href="/landing/contact" className="text-gray-400 hover:text-orange-400 transition-colors text-sm">
               Contacto
