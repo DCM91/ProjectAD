@@ -17,72 +17,16 @@ const GALLERY_CATEGORIES = [
     { id: "creacion",  title: "Creación de Contenido",  folderId: "1z7NF-h_OaHuLXBt07TCMTy9lXVCTfLb5" },
 ];
 
-const thumbSrc = (id) => `${PROXY_URL}?fileId=${id}`;
-
-const imageCache = new Map();
-const pendingFetches = new Map();
-
-function fetchImage(id) {
-    if (imageCache.has(id)) return Promise.resolve(imageCache.get(id));
-    if (pendingFetches.has(id)) return pendingFetches.get(id);
-
-    const promise = fetch(`${PROXY_URL}?fileId=${id}`)
-        .then((res) => {
-            if (!res.ok) throw new Error("Failed");
-            return res.text();
-        })
-        .then((dataUrl) => {
-            imageCache.set(id, dataUrl);
-            pendingFetches.delete(id);
-            return dataUrl;
-        })
-        .catch(() => {
-            pendingFetches.delete(id);
-            return null;
-        });
-
-    pendingFetches.set(id, promise);
-    return promise;
-}
-
-function getCachedSrc(id) {
-    return imageCache.get(id) || null;
-}
-
-const DriveImage = ({ fileId, alt, className }) => {
-    const [src, setSrc] = useState(() => getCachedSrc(fileId));
-    const [error, setError] = useState(false);
-
-    useEffect(() => {
-        if (src) return;
-        let cancelled = false;
-
-        fetchImage(fileId).then((dataUrl) => {
-            if (!cancelled && dataUrl) setSrc(dataUrl);
-            if (!cancelled && !dataUrl) setError(true);
-        });
-
-        return () => { cancelled = true; };
-    }, [fileId, src]);
-
-    if (error) {
-        return (
-            <div className={className + " bg-neutral-800 flex items-center justify-center"}>
-                <span className="text-gray-600 text-xs">No disponible</span>
-            </div>
-        );
-    }
-    if (!src) {
-        return <div className={className + " bg-neutral-800 animate-pulse"} />;
-    }
-    return <img src={src} alt={alt} className={className} loading="lazy" />;
-};
+const thumbSrc = (id, size) => `https://drive.google.com/thumbnail?id=${id}&sz=w${size}`;
+const lightboxSrc = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 const videoPreviewUrl = (id) => `https://drive.google.com/file/d/${id}/preview`;
 
 const SkeletonGrid = () => (
     <div className="flex gap-4 overflow-hidden">
         {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex-shrink-0 w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-neutral-800 animate-pulse" />
+            <div key={i} className="flex-shrink-0 w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-neutral-800 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full border-2 border-orange-500/20 border-t-orange-500 animate-spin" />
+            </div>
         ))}
     </div>
 );
@@ -160,10 +104,15 @@ const GalleryCategory = ({ category, items, onItemClick }) => {
                             className="flex-shrink-0 w-72 h-72 md:w-80 md:h-80 snap-start relative group rounded-2xl overflow-hidden cursor-pointer bg-neutral-800 border border-white/[0.04] hover:border-orange-500/30 transition-colors duration-500"
                         >
                             {item.type === "image" ? (
-                                <DriveImage
-                                    fileId={item.id}
+                                <img
+                                    src={thumbSrc(item.id, 600)}
                                     alt={item.name}
                                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                    loading={i < 3 ? "eager" : "lazy"}
+                                    referrerPolicy="no-referrer"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = "none";
+                                    }}
                                 />
                             ) : (
                                 <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-800">
@@ -276,27 +225,12 @@ export const Landing = ({ theme }) => {
   const handleLightboxOpen = useCallback((categoryId, i) => {
     const items = galleryData[categoryId].items;
 
-    const initialSlides = items.map((item) => ({
+    const slides = items.map((item) => ({
       ...item,
-      ...(item.type === "image" ? { src: getCachedSrc(item.id) } : {}),
+      ...(item.type === "image" ? { src: lightboxSrc(item.id) } : {}),
     }));
 
-    setLightbox({ open: true, index: i, items, slides: initialSlides, category: categoryId });
-
-    items.forEach((item, idx) => {
-      if (item.type === "image" && !getCachedSrc(item.id)) {
-        fetchImage(item.id).then((dataUrl) => {
-          if (dataUrl) {
-            setLightbox((prev) => {
-              if (!prev.open) return prev;
-              const nextSlides = [...prev.slides];
-              nextSlides[idx] = { ...nextSlides[idx], src: dataUrl };
-              return { ...prev, slides: nextSlides };
-            });
-          }
-        });
-      }
-    });
+    setLightbox({ open: true, index: i, items, slides, category: categoryId });
   }, [galleryData]);
 
   const handleLightboxClose = useCallback(() => {
