@@ -115,12 +115,22 @@ const GalleryCategory = ({ category, items, onItemClick }) => {
                                     }}
                                 />
                             ) : (
-                                <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-800">
-                                    <div className="w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center group-hover:border-orange-400/50 group-hover:bg-black/60 transition-all duration-300">
-                                        <BsPlayFill className="text-2xl text-white ml-0.5" />
+                                <>
+                                    <img
+                                        src={thumbSrc(item.id, 600)}
+                                        alt={item.name}
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                        loading={i < 3 ? "eager" : "lazy"}
+                                        referrerPolicy="no-referrer"
+                                        onError={(e) => { e.currentTarget.style.display = "none"; }}
+                                    />
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-800/60 group-hover:bg-neutral-800/80 transition-colors duration-300">
+                                        <div className="w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center group-hover:border-orange-400/50 group-hover:bg-black/60 transition-all duration-300">
+                                            <BsPlayFill className="text-2xl text-white ml-0.5" />
+                                        </div>
+                                        <span className="text-gray-400 text-xs mt-3 font-mono uppercase tracking-wider">Video</span>
                                     </div>
-                                    <span className="text-gray-500 text-xs mt-3 font-mono uppercase tracking-wider">Video</span>
-                                </div>
+                                </>
                             )}
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
