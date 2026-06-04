@@ -84,7 +84,7 @@ const Contact = () => {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "byphnix.photo@gmail.com",
+      email: "imaroacarmona@gmail.com",
       areaServed: ["Barcelona", "Granollers", "Vallès Oriental", "Catalunya"],
       availableLanguage: ["es", "en", "fr"],
     },
@@ -137,8 +137,8 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-white font-semibold">Email</h3>
-                                <a href="mailto:byphnix.photo@gmail.com" className="text-gray-400 hover:text-white transition-colors">
-                                    byphnix.photo@gmail.com
+                                <a href="mailto:imaroacarmona@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                                    imaroacarmona@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -247,8 +247,8 @@ const Contact = () => {
                     
                     <p className="mt-8 text-center text-gray-400 text-sm">
                         O si lo prefieres, puedes contactar conmigo escribiendo directamente a {" "}
-                        <a href="mailto:byphnix.photo@gmail.com" className="text-orange-500 hover:text-white transition-colors">
-                            byphnix.photo@gmail.com
+                        <a href="mailto:imaroacarmona@gmail.com" className="text-orange-500 hover:text-white transition-colors">
+                            imaroacarmona@gmail.com
                         </a>
                         .
                     </p>

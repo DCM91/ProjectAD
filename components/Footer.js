@@ -63,7 +63,7 @@ export const Footer = ({ theme }) => {
                 </Link>
              </div>
              <p className="text-xs text-gray-500 mt-4">
-               byphnix.photo@gmail.com
+               imaroacarmona@gmail.com
              </p>
             <p className="text-xs text-gray-500 mt-2">
                +34 677 36 90 40 
