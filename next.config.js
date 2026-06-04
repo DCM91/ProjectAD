@@ -4,8 +4,14 @@ const nextConfig = {
   i18n:{
     locales:["en", "es", "fr"],
     defaultLocale: "en",
-    localeDetection: true, //detecta el local preferido por el user en el navegador(esta en true por defecto)
-  }
+    localeDetection: true,
+  },
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
+      { protocol: "https", hostname: "drive.google.com" },
+    ],
+  },
 }
 
 module.exports = nextConfig

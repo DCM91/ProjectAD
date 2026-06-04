@@ -1,40 +1,143 @@
-import React, { useEffect, useState } from "react";
-import { BsInstagram, BsArrowDown } from "react-icons/bs";
+import React, { useEffect, useState, useCallback } from "react";
+import { BsArrowDown, BsPlayFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import en from "@/languages/en";
-import es from "@/languages/es";
-import fr from "@/languages/fr";
-import Lightbox from "yet-another-react-lightbox";
+import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-// Move gallery images to a constant to use it for both Grid and Lightbox
-const galleryImages = [
-    "ultimos trabajos (1).JPG",
-    "ultimos trabajos (2).JPG",
-    "ultimos trabajos (3).JPG",
-    "ultimos trabajos (4).JPG",
-    "ultimos trabajos (5).JPG",
-    "ultimos trabajos (6).JPG",
-    "ultimos trabajos (7).JPG",
-    "ultimos trabajos (8).JPG",
-    "ultimos trabajos (9).JPG",
-    "ultimos trabajos (10).JPG",
-    "ultimos trabajos (11).JPG",
-    "ultimos trabajos (12).JPG",
-    "ultimos trabajos (13).JPG",
+const PROXY_URL = "https://script.google.com/macros/s/AKfycbzsfMmv4EHsDjBRfAXHPuhKgrvoy9OM8c2pJnZMWSYlh_uZ9p9qqN1DnAiRAmfIZp8F/exec";
+
+const GALLERY_CATEGORIES = [
+    { id: "retratos",  title: "Retratos",              folderId: "1QB1mxWCAh3oieFacQOzI8P6UX1XMAnfh" },
+    { id: "ceremonias", title: "Ceremonias",            folderId: "1ZZGx-N-Pvy--JEfwZmY0kouDlWlqryZB" },
+    { id: "eventos",   title: "Eventos",                folderId: "1rGE7Uz02tp1Q88z8gissfiD-YiG7Rp7T" },
+    { id: "danza",     title: "Danza",                  folderId: "1ghik0gcgk6qTqSTXR8Q9TzPn0mp4LRJW" },
+    { id: "creacion",  title: "Creación de Contenido",  folderId: "1z7NF-h_OaHuLXBt07TCMTy9lXVCTfLb5" },
 ];
+
+const thumbSrc = (id) => `${PROXY_URL}?fileId=${id}`;
+
+const imageCache = new Map();
+const pendingFetches = new Map();
+
+function fetchImage(id) {
+    if (imageCache.has(id)) return Promise.resolve(imageCache.get(id));
+    if (pendingFetches.has(id)) return pendingFetches.get(id);
+
+    const promise = fetch(`${PROXY_URL}?fileId=${id}`)
+        .then((res) => {
+            if (!res.ok) throw new Error("Failed");
+            return res.text();
+        })
+        .then((dataUrl) => {
+            imageCache.set(id, dataUrl);
+            pendingFetches.delete(id);
+            return dataUrl;
+        })
+        .catch(() => {
+            pendingFetches.delete(id);
+            return null;
+        });
+
+    pendingFetches.set(id, promise);
+    return promise;
+}
+
+function getCachedSrc(id) {
+    return imageCache.get(id) || null;
+}
+
+const DriveImage = ({ fileId, alt, className }) => {
+    const [src, setSrc] = useState(() => getCachedSrc(fileId));
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        if (src) return;
+        let cancelled = false;
+
+        fetchImage(fileId).then((dataUrl) => {
+            if (!cancelled && dataUrl) setSrc(dataUrl);
+            if (!cancelled && !dataUrl) setError(true);
+        });
+
+        return () => { cancelled = true; };
+    }, [fileId, src]);
+
+    if (error) {
+        return (
+            <div className={className + " bg-neutral-800 flex items-center justify-center"}>
+                <span className="text-gray-600 text-xs">No disponible</span>
+            </div>
+        );
+    }
+    if (!src) {
+        return <div className={className + " bg-neutral-800 animate-pulse"} />;
+    }
+    return <img src={src} alt={alt} className={className} loading="lazy" />;
+};
+const videoPreviewUrl = (id) => `https://drive.google.com/file/d/${id}/preview`;
+
+const SkeletonGrid = () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[...Array(6)].map((_, i) => (
+            <div key={i} className="aspect-square rounded-2xl bg-neutral-800 animate-pulse" />
+        ))}
+    </div>
+);
+
+const GalleryCategory = ({ category, items, onItemClick }) => (
+    <div id={category.id} className="mb-20 last:mb-0">
+        <div className="flex items-center gap-3 mb-6">
+            <div className="h-0.5 w-10 bg-orange-500" />
+            <h2 className="font-title text-3xl text-white tracking-wide">{category.title}</h2>
+            <span className="text-gray-600 text-xs font-mono ml-2 hidden sm:inline">
+                {items.length} {items.length === 1 ? "archivo" : "archivos"}
+            </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {items.map((item, i) => (
+                <div
+                    key={item.id}
+                    onClick={() => onItemClick(i)}
+                    className="aspect-square relative group rounded-2xl overflow-hidden cursor-pointer bg-neutral-800 border border-white/[0.04] hover:border-orange-500/30 transition-colors duration-500"
+                >
+                    {item.type === "image" ? (
+                        <DriveImage
+                            fileId={item.id}
+                            alt={item.name}
+                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        />
+                    ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-800">
+                            <div className="w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center group-hover:border-orange-400/50 group-hover:bg-black/60 transition-all duration-300">
+                                <BsPlayFill className="text-2xl text-white ml-0.5" />
+                            </div>
+                            <span className="text-gray-500 text-xs mt-3 font-mono uppercase tracking-wider">Video</span>
+                        </div>
+                    )}
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                        <span className="text-white font-title text-xs tracking-[0.25em] uppercase border border-white/40 rounded-full px-4 py-1.5 backdrop-blur-sm">
+                            {item.type === "video" ? "Reproducir" : "Ampliar"}
+                        </span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
 
 export const Landing = ({ theme }) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
 
-  let t = en;
-  if (router.locale === "es") t = es;
-  if (router.locale === "fr") t = fr;
+  const initialGalleryState = () =>
+    Object.fromEntries(GALLERY_CATEGORIES.map((c) => [c.id, { items: [], loaded: false, error: false }]));
+
+  const [galleryData, setGalleryData] = useState(initialGalleryState);
+  const [lightbox, setLightbox] = useState({ open: false, index: 0, items: [], slides: [], category: null });
 
   useEffect(() => {
     const observerOptions = {
@@ -104,10 +207,65 @@ export const Landing = ({ theme }) => {
     }
   }, [router.events]);
 
-  const handleOpenLightbox = (i) => {
-      setIndex(i);
-      setOpen(true);
-  };
+  const handleLightboxOpen = useCallback((categoryId, i) => {
+    const items = galleryData[categoryId].items;
+
+    const initialSlides = items.map((item) => ({
+      ...item,
+      ...(item.type === "image" ? { src: getCachedSrc(item.id) } : {}),
+    }));
+
+    setLightbox({ open: true, index: i, items, slides: initialSlides, category: categoryId });
+
+    items.forEach((item, idx) => {
+      if (item.type === "image" && !getCachedSrc(item.id)) {
+        fetchImage(item.id).then((dataUrl) => {
+          if (dataUrl) {
+            setLightbox((prev) => {
+              if (!prev.open) return prev;
+              const nextSlides = [...prev.slides];
+              nextSlides[idx] = { ...nextSlides[idx], src: dataUrl };
+              return { ...prev, slides: nextSlides };
+            });
+          }
+        });
+      }
+    });
+  }, [galleryData]);
+
+  const handleLightboxClose = useCallback(() => {
+    setLightbox((prev) => ({ ...prev, open: false }));
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    Promise.allSettled(
+      GALLERY_CATEGORIES.map(async (cat) => {
+        const res = await fetch(`${PROXY_URL}?folderId=${cat.folderId}`, {
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const items = await res.json();
+        return { id: cat.id, items: Array.isArray(items) ? items : [] };
+      })
+    ).then((results) => {
+      setGalleryData((prev) => {
+        const next = { ...prev };
+        results.forEach((result, i) => {
+          const id = GALLERY_CATEGORIES[i].id;
+          if (result.status === "fulfilled") {
+            next[id] = { items: result.value.items, loaded: true, error: false };
+          } else {
+            next[id] = { items: [], loaded: true, error: true };
+          }
+        });
+        return next;
+      });
+    }).catch(() => {});
+
+    return () => controller.abort();
+  }, []);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -191,7 +349,7 @@ export const Landing = ({ theme }) => {
         `}</style>
       </Head>
 
-      <div data-theme={theme} className="min-h-screen bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white overflow-hidden">
+      <div data-theme={theme} className="min-h-screen w-full bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white">
         
         {/* ---------- HERO SECTION ---------- */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -230,7 +388,7 @@ export const Landing = ({ theme }) => {
                 RESERVAR SESIÓN
               </Link>
               <Link 
-                href="#gallery" 
+                href="#retratos" 
                 className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-white transition-all duration-300 rounded-lg"
               >
                 VER TRABAJOS
@@ -281,56 +439,118 @@ export const Landing = ({ theme }) => {
             </div>
         </section>
 
-        {/* ---------- MASONRY GALLERY ---------- */}
-        <section id="gallery" className="py-20 bg-neutral-800">
-             <div className="max-w-7xl mx-auto px-4">
-                <div className="flex justify-between items-end mb-12 reveal-on-scroll">
-                    <div>
-                        <h2 className="font-title text-3xl md:text-4xl text-white">Últimos Trabajos</h2>
-                        <p className="text-gray-400 mt-2">Una selección de mis capturas favoritas</p>
-                    </div>
-                     <a href="https://www.instagram.com/byphnix" target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors">
-                        <BsInstagram />
-                        <span>Seguir en Instagram</span>
-                     </a>
+        {/* ---------- DYNAMIC GALLERY ---------- */}
+        <section id="gallery" className="py-20 bg-neutral-900">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="text-center mb-16 reveal-on-scroll">
+                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Galería</h2>
+                    <div className="h-1 w-20 bg-orange-500 mx-auto" />
+                    <p className="mt-4 text-gray-400 font-light">Explora mi trabajo por categorías</p>
                 </div>
 
-                {/* Masonry Layout simulation using CSS Columns */}
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                     {galleryImages.map((img, i) => (
-                        <div 
-                            key={i} 
-                            onClick={() => handleOpenLightbox(i)}
-                            className="break-inside-avoid relative group rounded-2xl overflow-hidden reveal-on-scroll cursor-pointer"
-                        >
-                             <Image
-                                src={`/assets/lastWorks/${img}`}
-                                alt="Portfolio item"
-                                width={500}
-                                height={700}
-                                className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                            />
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span className="text-white font-title text-xl tracking-widest border border-white px-4 py-2">VER</span>
+                {GALLERY_CATEGORIES.map((category) => {
+                    const data = galleryData[category.id];
+                    if (!data || !data.loaded) {
+                        return (
+                            <div key={category.id} className="mb-20 last:mb-0">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="h-0.5 w-10 bg-orange-500/20" />
+                                    <div className="h-7 w-40 bg-neutral-800 rounded animate-pulse" />
+                                </div>
+                                <SkeletonGrid />
                             </div>
-                        </div>
-                     ))}
-                </div>
-                
-                <div className="mt-12 text-center md:hidden">
-                    <a href="https://www.instagram.com/byphnix" className="btn btn-outline text-white">Ver más en Instagram</a>
-                </div>
-             </div>
+                        );
+                    }
+                    if (data.error) {
+                        return (
+                            <div key={category.id} className="mb-20 last:mb-0 text-center py-10">
+                                <div className="flex items-center justify-center gap-3 mb-3">
+                                    <div className="h-0.5 w-10 bg-orange-500/20" />
+                                    <h2 className="font-title text-3xl text-white">{category.title}</h2>
+                                </div>
+                                <p className="text-gray-500 text-sm font-light">No se pudo cargar</p>
+                            </div>
+                        );
+                    }
+                    if (data.items.length === 0) {
+                        return (
+                            <div key={category.id} className="mb-20 last:mb-0 text-center py-10">
+                                <div className="flex items-center justify-center gap-3 mb-3">
+                                    <div className="h-0.5 w-10 bg-orange-500/20" />
+                                    <h2 className="font-title text-3xl text-white">{category.title}</h2>
+                                </div>
+                                <p className="text-gray-500 text-sm font-light">Próximamente</p>
+                            </div>
+                        );
+                    }
+                    return (
+                        <GalleryCategory
+                            key={category.id}
+                            category={category}
+                            items={data.items}
+                            onItemClick={(i) => handleLightboxOpen(category.id, i)}
+                        />
+                    );
+                })}
+            </div>
         </section>
 
-        {/* ---------- LIGHTBOX COMPONENT ---------- */}
-        <Lightbox
-            open={open}
-            close={() => setOpen(false)}
-            index={index}
-            slides={galleryImages.map(img => ({ src: `/assets/lastWorks/${img}` }))}
-        />
+        {/* ---------- LIGHTBOX ---------- */}
+        {lightbox.open && (
+            <Lightbox
+                open={lightbox.open}
+                close={handleLightboxClose}
+                index={lightbox.index}
+                slides={lightbox.slides}
+                render={{
+                    slide: ({ slide }) => {
+                        if (slide.type === "video") {
+                            return (
+                                <div style={{
+                                    width: "100%", height: "100%",
+                                    display: "flex", alignItems: "center", justifyContent: "center",
+                                }}>
+                                    <iframe
+                                        src={videoPreviewUrl(slide.id)}
+                                        width={Math.min(1280, typeof window !== "undefined" ? window.innerWidth * 0.9 : 1280)}
+                                        height={Math.min(720, typeof window !== "undefined" ? window.innerHeight * 0.8 : 720)}
+                                        allow="autoplay; fullscreen"
+                                        allowFullScreen
+                                        style={{ border: "none", borderRadius: "12px" }}
+                                    />
+                                </div>
+                            );
+                        }
+                        if (!slide.src) {
+                            return (
+                                <div style={{
+                                    display: "flex", alignItems: "center", justifyContent: "center",
+                                    width: "100%", height: "100%",
+                                }}>
+                                    <div className="w-16 h-16 rounded-full border-2 border-orange-500/30 border-t-orange-500 animate-spin" />
+                                </div>
+                            );
+                        }
+                        return (
+                            <div style={{
+                                display: "flex", alignItems: "center", justifyContent: "center",
+                                width: "100%", height: "100%",
+                            }}>
+                                <img
+                                    src={slide.src}
+                                    alt=""
+                                    style={{
+                                        maxWidth: "100%", maxHeight: "100%",
+                                        objectFit: "contain",
+                                    }}
+                                    draggable={false}
+                                />
+                            </div>
+                        );
+                    },
+                }}
+            />
+        )}
 
         {/* ---------- CONTACT BANNER ---------- */}
         <section className="py-12 bg-neutral-900 text-center px-4">
