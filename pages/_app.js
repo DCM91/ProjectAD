@@ -19,6 +19,7 @@ const inter = Inter({
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { Analytics } from '@vercel/analytics/next'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -36,6 +37,7 @@ export default function App({ Component, pageProps }) {
              <Component {...pageProps} />
           </motion.div>
        </AnimatePresence>
+       <Analytics />
     </div>
   )
 }
