@@ -66,7 +66,7 @@ const GalleryCategory = ({ category, items, onItemClick }) => {
                 <div className="flex items-center gap-3">
                     <div className="h-0.5 w-10 bg-orange-500" />
                     <h2 className="font-title text-3xl text-white tracking-wide">{category.title}</h2>
-                    <span className="text-gray-600 text-xs font-mono ml-2 hidden sm:inline">
+                    <span className="text-gray-300 text-xs font-mono ml-2 hidden sm:inline">
                         {items.length} {items.length === 1 ? "archivo" : "archivos"}
                     </span>
                 </div>
@@ -155,7 +155,7 @@ const GalleryCategory = ({ category, items, onItemClick }) => {
     );
 };
 
-export const Landing = ({ theme }) => {
+export const Landing = () => {
   const router = useRouter();
 
   const initialGalleryState = () =>
@@ -376,7 +376,7 @@ export const Landing = ({ theme }) => {
         `}</style>
       </Head>
 
-      <div data-theme={theme} className="min-h-screen w-full min-w-0 bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white overflow-x-hidden">
+      <div className="min-h-screen w-full min-w-0 bg-neutral-900 text-neutral-content selection:bg-orange-500 selection:text-white overflow-x-hidden">
         
         {/* ---------- HERO SECTION ---------- */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -393,7 +393,7 @@ export const Landing = ({ theme }) => {
           </div>
 
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div>
                 <span className="tracking-[0.3em] text-xs md:text-sm uppercase text-orange-400 font-bold mb-4 block">
                     Portfolio & Gallery
                 </span>
@@ -401,13 +401,11 @@ export const Landing = ({ theme }) => {
                     Aroa<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-500">Carmona</span>
                 </h1>
             </div>
-            
-            <p className="font-sans text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up invisible" style={{ animationDelay: '0.3s' }} aria-hidden="true" />
 
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-8">
               <Link 
                 href="/landing/contact" 
-                className="px-8 py-3 bg-orange-600 text-white font-semibold tracking-wide hover:bg-orange-700 transition-all duration-300 rounded-lg"
+                className="px-8 py-3 bg-orange-700 text-white font-semibold tracking-wide hover:bg-orange-800 transition-all duration-300 rounded-lg"
               >
                 RESERVAR SESIÓN
               </Link>

@@ -62,10 +62,10 @@ export const Footer = ({ theme }) => {
                   <MdEmail size={20} />
                 </Link>
              </div>
-             <p className="text-xs text-gray-500 mt-4">
+             <p className="text-xs text-gray-400 mt-4">
                imaroacarmona@gmail.com
              </p>
-            <p className="text-xs text-gray-500 mt-2">
+             <p className="text-xs text-gray-400 mt-2">
                +34 677 36 90 40 
              </p>
           </div>
@@ -75,7 +75,7 @@ export const Footer = ({ theme }) => {
         <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-800 to-transparent my-10" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
           <p>
             &copy; {currentYear} Aroa Carmona. Todos los derechos reservados.
           </p>

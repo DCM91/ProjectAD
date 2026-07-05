@@ -238,7 +238,7 @@ const Contact = () => {
 
                         <button
                             type="submit"
-                            className="btn btn-primary w-full bg-orange-600 hover:bg-orange-700 border-none text-white normal-case text-lg font-normal rounded-xl mt-4"
+                            className="btn btn-primary w-full bg-orange-700 hover:bg-orange-800 border-none text-white normal-case text-lg font-normal rounded-xl mt-4"
                             disabled={loading}
                         >
                             {loading ? "Enviando..." : "Enviar Mensaje"}
