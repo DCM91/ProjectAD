@@ -279,14 +279,12 @@ export const Landing = () => {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://byphnix.vercel.app/#business",
-    name: "Aroa Carmona Fotografía - Byphnix",
+    "@type": "ProfessionalService",
+    name: "Aroa Carmona Fotografía - By Phnix",
     image: "https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026",
     url: "https://byphnix.vercel.app",
-    telephone: "+34 677 36 90 40",
-    email: "imaroacarmona@gmail.com",
-    description: "Aroa Carmona (Byphnix), fotógrafa profesional especializada en bodas, ceremonias, retratos, eventos y danza en Granollers, Les Franqueses, Vallès Oriental y Barcelona. Reportajes fotográficos creativos y emocionales.",
+    telephone: "+34 677 00 00 00",
+    description: "Servicios de fotografía profesional en Barcelona y Granollers por Aroa Carmona. Bodas, eventos, mascotas y sesiones de retrato.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Granollers",
@@ -298,67 +296,34 @@ export const Landing = () => {
       latitude: 41.607,
       longitude: 2.287
     },
-    areaServed: [
-      "Granollers",
-      "Les Franqueses del Vallès",
-      "Barcelona",
-      "Vallès Oriental",
-      "Vallès Occidental",
-      "Mollet del Vallès",
-      "Cardedeu",
-      "La Garriga",
-      "Caldes de Montbui",
-      "Sant Celoni",
-      "Catalunya"
-    ],
+    areaServed: ["Granollers", "Barcelona", "Vallès Oriental", "Catalunya"],
     sameAs: [
       "https://www.instagram.com/byphnix"
     ],
-    priceRange: "€€",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "20:00"
-    },
-    knowsAbout: [
-      "Fotografía de bodas",
-      "Fotografía de retratos",
-      "Fotografía de ceremonias",
-      "Fotografía de eventos",
-      "Fotografía de danza",
-      "Creación de contenido",
-      "Reportaje fotográfico",
-      "Sesiones de fotos profesional"
-    ]
+    priceRange: "€€"
   };
 
   return (
     <>
       <Head>
-        <title>Aroa Carmona | Fotógrafa de Bodas en Granollers, Les Franqueses y Barcelona</title>
-        <meta name="description" content="Aroa Carmona (Byphnix), fotógrafa profesional en Granollers y Barcelona. Especialista en fotografía de bodas, ceremonias, retratos y eventos en Vallès Oriental. Presupuestos sin compromiso." />
-        <meta name="keywords" content="fotógrafa bodas Granollers, fotógrafa Les Franqueses, Aroa Carmona fotógrafa, fotografía bodas Barcelona, reportaje fotográfico Vallès Oriental, Byphnix, fotógrafa Granollers, fotógrafa Vallès Oriental, sesiones de fotos Barcelona, fotografía profesional Granollers" />
+        <title>Aroa Carmona | Fotografía en Barcelona y Granollers</title>
+        <meta name="description" content="Aroa Carmona, fotógrafa en Barcelona y Granollers. Especialista en capturar momentos únicos: eventos, bodas, mascotas y retratos. Web desarrollada por Daniel Castro." />
+        <meta name="keywords" content="Aroa Carmona, Fotografía Barcelona, Fotografía Granollers, Fotógrafa de bodas, Sesiones de fotos, Daniel Castro, Daniel Castro Martín, Desarrollador Web" />
         <meta name="author" content="Daniel Castro Martín" />
         <meta name="robots" content="index, follow" />
-
-        <link rel="canonical" href="https://byphnix.vercel.app/" />
-        <link rel="alternate" hreflang="es" href="https://byphnix.vercel.app/" />
-        <link rel="alternate" hreflang="en" href="https://byphnix.vercel.app/en/" />
-        <link rel="alternate" hreflang="fr" href="https://byphnix.vercel.app/fr/" />
-        <link rel="alternate" hreflang="x-default" href="https://byphnix.vercel.app/" />
-
+        
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://byphnix.vercel.app/" />
-        <meta property="og:title" content="Aroa Carmona | Fotógrafa de Bodas en Granollers, Les Franqueses y Barcelona" />
-        <meta property="og:description" content="Aroa Carmona (Byphnix), fotógrafa profesional en Granollers. Especialista en bodas, ceremonias, retratos y eventos en Vallès Oriental." />
+        <meta property="og:title" content="Aroa Carmona | Fotografía Profesional en Barcelona y Granollers" />
+        <meta property="og:description" content="Descubre el portfolio de Aroa Carmona. Fotografía emocional y creativa en Barcelona y Granollers. Creado por Daniel Castro." />
         <meta property="og:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026" />
-        <meta property="og:locale" content="es_ES" />
 
+        {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://byphnix.vercel.app/" />
-        <meta property="twitter:title" content="Aroa Carmona | Fotógrafa de Bodas en Granollers y Barcelona" />
-        <meta property="twitter:description" content="Fotografía profesional de bodas, retratos y eventos en Granollers, Les Franqueses y Vallès Oriental. Aroa Carmona - Byphnix." />
+        <meta property="twitter:title" content="Aroa Carmona | Fotografía Barcelona" />
+        <meta property="twitter:description" content="Fotografía profesional en Barcelona y Granollers. Aroa Carmona captura tu esencia." />
         <meta property="twitter:image" content="https://byphnix.vercel.app/assets/CARROUSEL1.JPG?v=06022026" />
 
         <script
@@ -419,7 +384,7 @@ export const Landing = () => {
           <div className="absolute inset-0 z-0">
              <Image
                 src="/assets/CARROUSEL1.JPG?v=06022026" // Using one of your best shots as hero bg
-                alt="Aroa Carmona Byphnix — fotógrafa de bodas, retratos y eventos en Granollers y Barcelona"
+                alt="Background texture"
                 fill
                 className="object-cover opacity-40 grayscale-[20%]"
                 priority
@@ -459,38 +424,13 @@ export const Landing = () => {
           </div>
         </section>
 
-        {/* ---------- SEO INTRODUCTION ---------- */}
-        <section className="py-16 md:py-20 bg-neutral-900">
-          <div className="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
-            <h2 className="font-title text-3xl md:text-4xl text-white mb-6">
-              Fotógrafa profesional en Granollers, Les Franqueses y Vallès Oriental
-            </h2>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-              Soy <strong className="text-white font-medium">Aroa Carmona</strong>, fotógrafa especializada en 
-              <strong className="text-orange-400 font-medium"> bodas, ceremonias, retratos y eventos</strong> en 
-              Granollers, Les Franqueses del Vallès, Barcelona y toda la comarca del Vallès Oriental. 
-              Mi enfoque combina la fotografía documental con un estilo editorial para crear 
-              imágenes que cuentan historias auténticas y emocionales.
-            </p>
-            <p className="text-gray-400 text-base leading-relaxed font-light max-w-3xl mx-auto">
-              Ofrezco servicios de <strong className="text-gray-300 font-medium">reportaje fotográfico de bodas</strong>, 
-              sesiones de retrato individual y familiar, fotografía de ceremonias y eventos corporativos, 
-              fotografía de danza y creación de contenido para marcas y profesionales. 
-              Cada sesión es personalizada y adaptada a tus necesidades, ya sea en exteriores naturales, 
-              en estudio o en la localización que elijas. Si buscas una 
-              <strong className="text-gray-300 font-medium"> fotógrafa de bodas en Granollers</strong> o 
-              alrededores, estaré encantada de acompañarte en un día tan especial.
-            </p>
-          </div>
-        </section>
-
         {/* ---------- DYNAMIC GALLERY ---------- */}
         <section id="gallery" className="py-20 bg-neutral-900">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16 reveal-on-scroll">
-                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Servicios de Fotografía en Granollers y Vallès Oriental</h2>
+                    <h2 className="font-title text-4xl md:text-5xl mb-4 text-white">Mis Servicios</h2>
                     <div className="h-1 w-20 bg-orange-500 mx-auto" />
-                    <p className="mt-4 text-gray-400 font-light max-w-2xl mx-auto">Fotografía de bodas, retratos, ceremonias, eventos, danza y creación de contenido. Especialización y pasión en cada disparo en Barcelona, Granollers y Les Franqueses.</p>
+                    <p className="mt-4 text-gray-400 font-light">Especialización y pasión en cada disparo</p>
                 </div>
 
                 {GALLERY_CATEGORIES.map((category) => {
@@ -600,10 +540,10 @@ export const Landing = () => {
         {/* ---------- CONTACT BANNER ---------- */}
         <section className="py-12 bg-neutral-900 text-center px-4">
             <div className="reveal-on-scroll max-w-2xl mx-auto border border-white/10 p-10 md:p-16 rounded-3xl bg-neutral-800/30">
-                <h2 className="font-title text-4xl mb-6 text-white">¿Hablamos de tu sesión?</h2>
+                <h2 className="font-title text-4xl mb-6 text-white">¿Hablamos?</h2>
                 <p className="text-gray-300 mb-8 text-lg font-light">
-                    Estoy disponible para nuevos proyectos y colaboraciones en Granollers, Les Franqueses, Barcelona y Vallès Oriental. <br/>
-                    Cuéntame tu idea y creemos algo único juntos.
+                    Estoy disponible para nuevos proyectos y colaboraciones. <br/>
+                    Cuéntame tu idea y creemos algo mágico juntos.
                 </p>
                 <Link href="/landing/contact" className="btn btn-primary btn-lg px-10 rounded-full text-white shadow-lg shadow-orange-500/20">
                     Contactar Ahora
