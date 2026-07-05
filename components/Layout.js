@@ -25,6 +25,10 @@ export const Layout = ({ title = "Byphnix" , children}) => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
 
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-orange-500 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-300">
+            Saltar al contenido principal
+        </a>
+
         <header className='w-full bg-transparent ' >
           <div className=''>
               <Navbar theme={theme}/>
@@ -39,7 +43,7 @@ export const Layout = ({ title = "Byphnix" , children}) => {
           </div>
         </header>
 
-        <main className='w-full min-w-0 overflow-hidden'>{children}</main>
+        <main id="main-content" className='w-full min-w-0 overflow-hidden'>{children}</main>
 
         <footer className=''><Footer theme={theme} /></footer>
     </div>

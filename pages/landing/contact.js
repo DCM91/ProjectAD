@@ -176,11 +176,13 @@ const Contact = () => {
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="form-control">
-                                <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Nombre</label>
+                                <label htmlFor="user_name" className="label pl-0 text-xs uppercase text-gray-300 font-bold">Nombre</label>
                                 <input
+                                    id="user_name"
                                     name="user_name" 
                                     type="text"
-                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                    autoComplete="name"
+                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white w-full rounded-lg"
                                     placeholder="Tu nombre"
                                     value={form.user_name}
                                     onChange={handleChange}
@@ -188,11 +190,13 @@ const Contact = () => {
                                 />
                             </div>
                             <div className="form-control">
-                                <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Email</label>
+                                <label htmlFor="user_email" className="label pl-0 text-xs uppercase text-gray-300 font-bold">Email</label>
                                 <input
+                                    id="user_email"
                                     name="user_email"
                                     type="email"
-                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                    autoComplete="email"
+                                    className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white w-full rounded-lg"
                                     placeholder="tucorreo@ejemplo.com"
                                     value={form.user_email}
                                     onChange={handleChange}
@@ -202,11 +206,13 @@ const Contact = () => {
                         </div>
 
                         <div className="form-control">
-                            <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Asunto</label>
+                            <label htmlFor="subject" className="label pl-0 text-xs uppercase text-gray-300 font-bold">Asunto</label>
                             <input
+                                id="subject"
                                 name="subject"
                                 type="text"
-                                className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg"
+                                autoComplete="off"
+                                className="input bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white w-full rounded-lg"
                                 placeholder="Sesión de fotos..."
                                 value={form.subject}
                                 onChange={handleChange}
@@ -214,10 +220,11 @@ const Contact = () => {
                         </div>
 
                         <div className="form-control">
-                            <label className="label pl-0 text-xs uppercase text-gray-500 font-bold">Mensaje</label>
+                            <label htmlFor="message" className="label pl-0 text-xs uppercase text-gray-300 font-bold">Mensaje</label>
                             <textarea
+                                id="message"
                                 name="message"
-                                className="textarea bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none text-white w-full rounded-lg min-h-[150px] text-base"
+                                className="textarea bg-neutral-900 border-neutral-700 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white w-full rounded-lg min-h-[150px] text-base"
                                 placeholder="Cuéntame sobre tu idea, fechas, lugar..."
                                 value={form.message}
                                 onChange={handleChange}
@@ -226,12 +233,12 @@ const Contact = () => {
                         </div>
 
                         {status === "success" && (
-                            <div className="alert alert-success bg-green-900/50 border-green-800 text-green-200 text-sm py-2 rounded-lg">
+                            <div role="alert" className="alert alert-success bg-green-900/50 border-green-800 text-green-200 text-sm py-2 rounded-lg">
                                 <span>¡Mensaje enviado correctamente!</span>
                             </div>
                         )}
                         {status === "error" && (
-                            <div className="alert alert-error bg-red-900/50 border-red-800 text-red-200 text-sm py-2 rounded-lg">
+                            <div role="alert" className="alert alert-error bg-red-900/50 border-red-800 text-red-200 text-sm py-2 rounded-lg">
                                 <span>Hubo un error. Por favor inténtalo de nuevo.</span>
                             </div>
                         )}

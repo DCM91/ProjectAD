@@ -58,6 +58,7 @@ export const Navbar = ({ theme }) => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-white z-50 p-2"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <BsX size={32} /> : <BsList size={32} />}
           </button>
