@@ -31,5 +31,9 @@
     "not op_mini all",
     "ios >= 12",
     "safari >= 12"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^13.5.11"
+  }
 }
