@@ -136,8 +136,8 @@ const Contact = () => {
                                 <MdEmail size={24} />
                             </div>
                             <div>
-                                <h3 className="text-white font-semibold">Email</h3>
-                                <a href="mailto:imaroacarmona@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                                <h2 className="text-white font-semibold text-lg">Email</h2>
+                                <a href="mailto:imaroacarmona@gmail.com" className="text-gray-400 hover:text-white transition-colors underline decoration-gray-600/50 underline-offset-2">
                                     imaroacarmona@gmail.com
                                 </a>
                             </div>
@@ -148,7 +148,7 @@ const Contact = () => {
                                 <MdLocationOn size={24} />
                             </div>
                             <div>
-                                <h3 className="text-white font-semibold">Ubicación</h3>
+                                <h2 className="text-white font-semibold text-lg">Ubicación</h2>
                                 <p className="text-gray-400">
                                     Granollers · Barcelona · Vallès Oriental
                                 </p>
@@ -160,8 +160,8 @@ const Contact = () => {
                                 <BsInstagram size={24} />
                             </div>
                             <div>
-                                <h3 className="text-white font-semibold">Instagram</h3>
-                                <a href="https://instagram.com/byphnix" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                <h2 className="text-white font-semibold text-lg">Instagram</h2>
+                                <a href="https://instagram.com/byphnix" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors underline decoration-gray-600/50 underline-offset-2">
                                     @byphnix
                                 </a>
                             </div>
@@ -254,7 +254,7 @@ const Contact = () => {
                     
                     <p className="mt-8 text-center text-gray-400 text-sm">
                         O si lo prefieres, puedes contactar conmigo escribiendo directamente a {" "}
-                        <a href="mailto:imaroacarmona@gmail.com" className="text-orange-500 hover:text-white transition-colors">
+                        <a href="mailto:imaroacarmona@gmail.com" className="text-orange-500 hover:text-white transition-colors underline decoration-orange-500/50 underline-offset-2">
                             imaroacarmona@gmail.com
                         </a>
                         .
