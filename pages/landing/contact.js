@@ -64,8 +64,8 @@ const Contact = () => {
       });
   };
 
-  const seoTitle = "Contacto | Aroa Carmona Fotografía Barcelona y Granollers";
-  const seoDescription = "Contacta con Aroa Carmona. Reserva tu sesión de fotos en Barcelona y Granollers: bodas, retratos y mascotas. Web desarrollada por Daniel Castro.";
+  const seoTitle = "Contacto | Fotógrafa de Bodas Granollers — Aroa Carmona";
+  const seoDescription = "Contacta con Aroa Carmona, fotógrafa de bodas en Granollers, Les Franqueses y Barcelona. Reserva tu sesión de fotos para bodas, retratos, ceremonias y eventos en Vallès Oriental.";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -95,7 +95,7 @@ const Contact = () => {
       <Head>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <meta name="keywords" content="contacto fotógrafa Barcelona, contacto fotógrafa Granollers, Aroa Carmona contacto, Daniel Castro Martín, sesiones de fotos Barcelona" />
+        <meta name="keywords" content="contacto fotógrafa bodas Granollers, fotógrafa Les Franqueses, Aroa Carmona contacto, fotógrafa bodas Barcelona, reservar sesión fotos Granollers, fotógrafa Vallès Oriental, sesiones de fotos Barcelona, reportaje bodas Granollers" />
         <meta name="author" content="Daniel Castro Martín" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={seoTitle} />
@@ -104,6 +104,10 @@ const Contact = () => {
         <meta property="og:url" content="https://byphnix.vercel.app/landing/contact" />
         <meta property="og:locale" content="es_ES" />
         <link rel="canonical" href="https://byphnix.vercel.app/landing/contact" />
+        <link rel="alternate" hreflang="es" href="https://byphnix.vercel.app/landing/contact" />
+        <link rel="alternate" hreflang="en" href="https://byphnix.vercel.app/en/landing/contact" />
+        <link rel="alternate" hreflang="fr" href="https://byphnix.vercel.app/fr/landing/contact" />
+        <link rel="alternate" hreflang="x-default" href="https://byphnix.vercel.app/landing/contact" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
@@ -126,7 +130,7 @@ const Contact = () => {
                         </h1>
                         <p className="text-gray-400 font-light text-lg leading-relaxed max-w-md">
                             Estoy aquí para resolver tus dudas y planificar juntos una sesión que capture exactamente lo que buscas.
-                            Ya sea en Granollers, Barcelona o cualquier rincón especial.
+                            Ya sea en Granollers, Les Franqueses, Barcelona o cualquier rincón del Vallès Oriental.
                         </p>
                     </div>
 
